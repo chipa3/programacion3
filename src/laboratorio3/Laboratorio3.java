@@ -8,11 +8,11 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 public class Laboratorio3 {
     
-    public static String plani[][] = new String[10][10];
+    public static String plani[][] = new String[10][11];
     public static Scanner lector = new Scanner(System.in);
     public static float dep[] = new float[5];
     public static  String ISR[][] = new String[10][3];
-    public static  int intcodemp = 0,intsueldobase = 0,intdescuento,intconversueldo,intbonificacion,intpercepciones,opcionisr,intcomision,opcion,intsueldoliquido,intdep = 0;
+    public static  int intcodemp = 0,intsueldobase = 0,intdescuento,intconversueldo,intbonificacion,intpercepciones,intopcion,intcomision,opcion,intsueldoliquido,intdep = 0;
     public static float fltigss,fltsueldoliquido,fltsumatoria,fltisr = 0,fltdeducciones;
     public static  DecimalFormat df = new DecimalFormat("#.00");
     public static String op;
@@ -52,15 +52,27 @@ public class Laboratorio3 {
                     plani[j][0]= Integer.toString(codigodep(intdep));
                     plani[j][1] = Integer.toString(codigoemp(intcodemp));
                     plani[j][2] = JOptionPane.showInputDialog(null,"PLANILLA DE SALARIOS\nINGRESE EL NOMBRE DEL EMPLEADO No."+(j+1));
-                    //op = JOptionPane.showInputDialog(null,"PLANILLA DE SALARIOS\nEL EMPLEADO No."+(j+1))+" PAGA ISR?\n1.SI\n2.NO";
                     intsueldobase = (int) (2500 + (Math.random()*10000)); 
                     plani[j][3] = Integer.toString(intsueldobase);
                     intbonificacion = (int)((Math.random()*500)+1);
                     plani[j][4] = Integer.toString(intbonificacion);
                     intcomision = (int)((Math.random()*500)+ 1);
                     plani[j][5] = Integer.toString(intcomision);
-                    fltigss = (float) ((intsueldobase + intcomision )*0.0483);                
-                    plani[j][6] = String.valueOf(df.format(fltigss));
+                    op = JOptionPane.showInputDialog(null,"PLANILLA DE SALARIOS\nEL EMPLEADO No."+(j+1)+" PAGA IGSS?\n1.SI\n2.NO");
+                    intopcion = Integer.parseInt(op);
+                    switch(intopcion)
+                    {
+                        case 1:
+                            fltigss = (float) ((intsueldobase + intcomision )*0.0483);                
+                            plani[j][6] = String.valueOf(df.format(fltigss));
+                            plani[j][10] = "SI";
+                            break;
+                        case 2:
+                            fltigss = (float) ((intsueldobase + intcomision )*0.0);                
+                            plani[j][6] = String.valueOf(df.format(fltigss));
+                            plani[j][10] = "NO";
+                            break;
+                    }
                     intdescuento = (int)((Math.random()*500)+1);                   
                     plani[j][7] = Integer.toString(intdescuento);
                     
@@ -100,11 +112,11 @@ public class Laboratorio3 {
     {
        //IMPRESION DE LA MATRIZ
       System.out.println("__________________________________________________________________________________________________________________________________________________________________________________________________________________");
-      System.out.println("No.DEPARTAMENTO\t\tCODIGO\t\tNOMBRE\t\tSUELDO BASE\t\tBONIFICACION\t\tCOMISIONES\t\tIGSS\t\t\tDESCUENTOS J.\t\tISR\t\tSUELDO LIQUIDO");
+      System.out.println("No.DEPARTAMENTO\t\tCODIGO\t\tNOMBRE\t\tSUELDO BASE\t\tBONIFICACION\t\tCOMISIONES\t\tIGSS\t\t\tDESCUENTOS J.\t\tISR\t\tSUELDO LIQUIDO\t\tPAGA IGSS");
       for(int i = 0; i <10;i++)
       {    
        System.out.println("\t"+plani[i][0]+"\t\t"+ plani[i][1]+"\t\t"+plani[i][2]+"\t\tQ."+plani[i][3]+"\t\t\tQ."
-               + ""+plani[i][4]+"\t\t\tQ."+plani[i][5]+"\t\t\tQ."+plani[i][6]+"\t\tQ."+plani[i][7]+"\t\t\tQ."+plani[i][8]+"\t\tQ."+plani[i][9]);
+               + ""+plani[i][4]+"\t\t\tQ."+plani[i][5]+"\t\t\tQ."+plani[i][6]+"\t\tQ."+plani[i][7]+"\t\t\tQ."+plani[i][8]+"\t\tQ."+plani[i][9]+"\t\t"+plani[i][10]);
        System.out.println("_________________________________________________________________________________________________________________________________________________________________________________________________________________");
       }     
     }
@@ -167,7 +179,7 @@ public class Laboratorio3 {
     System.out.println("PORCENTAJE DE ISR POR EMPLEADO: \n");
        for(int i = 0;i<10;i++)
        {
-           System.out.println("EMPLEADO "+(i+1)+":"+ISR[i][0]+"\t\t\tPAGA:"+ISR[i][1]+"\t\t\tEL ISR ES:"+ISR[i][2]);
+           System.out.println("EMPLEADO "+(i+1)+":"+ISR[i][0]+"\t\t\tPAGA:"+ISR[i][1]+"\t\t\t\tEL ISR ES:"+ISR[i][2]);
        }
     }
     public static void menuregresar()
