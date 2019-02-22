@@ -1,7 +1,7 @@
 /*
 NOMBRE:JOSE ESTANISLAO LOPEZ TUBAC
 0901-17-12
-Este programa realiza los calculos para ver los distintos gastos en una planilla de distintos empleados
+Este programa realiza los calculos para una planilla con distintos empleados, de diferentes departamentos
  */
 package laboratorio3;
 import java.text.DecimalFormat;
@@ -22,7 +22,10 @@ public class Laboratorio3 {
     public static float fltisr1 = (float) 0.03 , fltisr2 = (float) 0.05, fltisr3 = (float) 0.1;
     public static  DecimalFormat df = new DecimalFormat("#.00");
     public static String op;
- 
+        
+    //comentarios de prueba 1
+    //comentarios de prueba 2
+    //comentarios de prueba 3
     public static int codigodep(int j)
     {
     //CODIGO RANDOM DE LOS DEPARTAMENTOS    
@@ -66,7 +69,7 @@ public class Laboratorio3 {
                     plani[j][4] = Integer.toString(intbonificacion);
                     intcomision = (int)((Math.random()*500)+ 1);
                     plani[j][5] = Integer.toString(intcomision);
-                    //introduccion de la resúesta en la variable para ver si calcular el igss
+                    //introduccion de la respúesta en la variable para ver si calcular el igss
                     op = JOptionPane.showInputDialog(null,"PLANILLA DE SALARIOS\nEL EMPLEADO No."+(j+1)+" PAGA IGSS?\n1.SI\n2.NO");
                     intopcion = Integer.parseInt(op);
                     switch(intopcion)
@@ -183,7 +186,7 @@ public class Laboratorio3 {
           ISR[i][1] = "5%";
           ISR[i][2] = plani[i][8];
         }
-        else if(intconversueldo >=  10000 && intconversueldo <= 100000)
+        else if(intconversueldo >=  10001 && intconversueldo <= 100000)
         {
             ISR[i][0] = plani[i][2];
             ISR[i][1] = "10%";
