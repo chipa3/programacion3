@@ -1,6 +1,7 @@
 /*
 NOMBRE:JOSE ESTANISLAO LOPEZ TUBAC
 0901-17-12
+Este programa realiza los calculos para ver los distintos gastos en una planilla de distintos empleados
  */
 package laboratorio3;
 import java.text.DecimalFormat;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import static laboratorio3.Laboratorio3.nomb;
 public class Laboratorio3 {
-    
+    //declaracion de variables globales
     public static String plani[][] = new String[10][11];
     public static String nomb[] = {"jose" ,"laib  "," carlos","daniel","javier","brian","bryan","kike","ricardo","richi"};
     public static String opigss[] = {"si" ,"no"};
@@ -17,6 +18,8 @@ public class Laboratorio3 {
     public static  String ISR[][] = new String[10][3];
     public static  int intcodemp = 0,intsueldobase = 0,intdescuento,intconversueldo,intbonificacion,intpercepciones,intopcion,intcomision,opcion,intsueldoliquido,intdep = 0;
     public static float fltigss,fltsueldoliquido,fltsumatoria,fltisr = 0,fltdeducciones;
+    public static double fltvalorigss = 0.0483;
+    public static float fltisr1 = (float) 0.03 , fltisr2 = (float) 0.05, fltisr3 = (float) 0.1;
     public static  DecimalFormat df = new DecimalFormat("#.00");
     public static String op;
  
@@ -53,21 +56,23 @@ public class Laboratorio3 {
        
          for(int j = 0;j <10;j++)
                     {
-                    plani[j][0]= Integer.toString(codigodep(intdep));
-                    plani[j][1] = Integer.toString(codigoemp(intcodemp));
-                    plani[j][2] = nomb[(int)((Math.random()*9))];
-                    intsueldobase = (int) (2500 + (Math.random()*10000)); 
+                     //lenado de codigos automaticos por medio de procesos
+                    plani[j][0]= Integer.toString(codigodep(intdep));//Llenado de numeros random para el codigo de departamento por medio de un proceso
+                    plani[j][1] = Integer.toString(codigoemp(intcodemp));//Llenado de numeros random para el codigo de empleado
+                    plani[j][2] = nomb[(int)((Math.random()*9))];//Llenado de nombres random 
+                    intsueldobase = (int) (2500 + (Math.random()*10000)); //Llenados de numero
                     plani[j][3] = Integer.toString(intsueldobase);
                     intbonificacion = (int)((Math.random()*500)+1);
                     plani[j][4] = Integer.toString(intbonificacion);
                     intcomision = (int)((Math.random()*500)+ 1);
                     plani[j][5] = Integer.toString(intcomision);
+                    //introduccion de la resúesta en la variable para ver si calcular el igss
                     op = JOptionPane.showInputDialog(null,"PLANILLA DE SALARIOS\nEL EMPLEADO No."+(j+1)+" PAGA IGSS?\n1.SI\n2.NO");
                     intopcion = Integer.parseInt(op);
                     switch(intopcion)
                     {
                         case 1:
-                            fltigss = (float) ((intsueldobase + intcomision )*0.0483);                
+                            fltigss = (float) (((intsueldobase + intcomision )*fltvalorigss));        
                             plani[j][6] = String.valueOf(df.format(fltigss));
                             plani[j][10] = "SI";
                             break;
@@ -76,21 +81,22 @@ public class Laboratorio3 {
                             plani[j][6] = String.valueOf(df.format(fltigss));
                             plani[j][10] = "NO";
                             break;
+                 
                     }
                     intdescuento = (int)((Math.random()*500)+1);                   
                     plani[j][7] = Integer.toString(intdescuento);
                     
                     if(intsueldobase >=2500 && intsueldobase <= 5000)
                     {
-                    fltisr = (float) ((intsueldobase)*0.03);
+                    fltisr = (float) ((intsueldobase)*fltisr1);
                     plani[j][8] = String.valueOf(df.format(fltisr));
                     }else if(intsueldobase >5001 && intsueldobase <10000)
                     {
-                     fltisr = (float) ((intsueldobase)*0.05); 
+                     fltisr = (float) ((intsueldobase)*fltisr2); 
                      plani[j][8] = String.valueOf(df.format(fltisr));
-                    }else if(intsueldobase >10001 && intsueldobase <100001)
+                    }else if(intsueldobase >=10001 )
                     {
-                     fltisr = (float) ((intsueldobase)*0.10); 
+                     fltisr = (float) ((intsueldobase)*fltisr3); 
                      plani[j][8] = String.valueOf(df.format(fltisr));
                     }                                     
                     percepciones();
@@ -102,10 +108,12 @@ public class Laboratorio3 {
     
     public static void percepciones()
     {
+        //asignacion de las percepciones a una variable
      intpercepciones = intsueldobase + intbonificacion +intcomision;   
     }
      public static void deducciones()
     {
+        //asignacion de las deducciones a una variable
         fltdeducciones = fltigss +intdescuento + fltisr;
     }
      public static void sueldoliquido()
@@ -127,7 +135,8 @@ public class Laboratorio3 {
     public static void totaldep()
     {
     for(int i = 0; i<10;i++)
-      { 
+      {
+          //en la variabel fltsumatoria se va a guardar lo que tiene la matriz en la posicion 9,convertido a un dato con decimal
       fltsumatoria = Float.parseFloat(plani[i][9]);
       if(plani[i][0].equals("1"))
       {
@@ -160,6 +169,7 @@ public class Laboratorio3 {
     {
     for(int i = 0; i <10; i++)
        {
+           //en la variable intconversueldo se va a guardar lo que tiene la matriz en la posicion 3,convertido a un dato con entero
        intconversueldo = Integer.parseInt(plani[i][3]);
         if(intconversueldo >= 2500 && intconversueldo<=5000)
         {
@@ -188,6 +198,7 @@ public class Laboratorio3 {
     }
     public static void menuregresar()
     {
+        //menu para ciclo do-while
        System.out.println("\n¿DESEA VOLVER A INGRESAR LOS NOMBRES?\n1.si\n2.no");
        opcion = lector.nextInt();
     }
