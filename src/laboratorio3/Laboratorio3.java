@@ -12,7 +12,7 @@ public class Laboratorio3 {
     //declaracion de variables globales
     public static String plani[][] = new String[10][11];
     public static String nomb[] = {"jose" ,"laib  "," carlos","daniel","javier","brian","bryan","kike","ricardo","richi"};
-    public static String opigss[] = {"si" ,"no"};
+
     public static Scanner lector = new Scanner(System.in);
     public static float dep[] = new float[5]; 
     public static  String ISR[][] = new String[10][3];
@@ -77,7 +77,7 @@ public class Laboratorio3 {
                             plani[j][10] = "SI";
                             break;
                         case 2:
-                            fltigss = (float) ((intsueldobase + intcomision )*0.0);                
+                            fltigss = 0;                
                             plani[j][6] = String.valueOf(df.format(fltigss));
                             plani[j][10] = "NO";
                             break;
