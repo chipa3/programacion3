@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class planilla extends javax.swing.JFrame {
     private int id,j;
+    private float totalplanilla = (float) 0.0;
     private final String StrPlanilla[][] = new String[10][10];//matriz de la nomina
     private final String Strtotaldep[][]= new String[2][2];
     DecimalFormat deci= new DecimalFormat("#.00");//clase que controla la cantidad de decimales
@@ -97,11 +98,6 @@ public class planilla extends javax.swing.JFrame {
 
         tblresultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -256,34 +252,121 @@ public class planilla extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"ERROR AL MOSTRAR DATOS"+e);
         }
         tablamodelo();
+   
     }//GEN-LAST:event_btnaceptarActionPerformed
     
     
-    private void btntotaldepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntotaldepActionPerformed
-        totaldep();
-      
-    }//GEN-LAST:event_btntotaldepActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        MENUPRINCIPAL v = new MENUPRINCIPAL();
        v.show();
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void limpiartabla(){
+        tbltotaldepartamentos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
+            },
+            new String [] {
+                "TOTAL POR DEPARTAMENTO"
+            }
+        ));
+    tblresultados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "No.Departamento", "Codigo empleado", "Nombre empleado", "Sueldo base", "Bonificacion", "Comisiones", "IGSS", "ISR", "Descuentos", "Sueldo liquido"
+            }
+        ));
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        limpiartabla();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       codigo();
-       fechas_nomina_encabezado();
+     codigo();
+     //fechas_nomina_encabezado();
+     ingreso_nomina_detalle();
       
     }//GEN-LAST:event_jButton4ActionPerformed
-  public void fechas_nomina_encabezado()
+
+    private void btntotaldepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntotaldepActionPerformed
+        totaldep();
+    }//GEN-LAST:event_btntotaldepActionPerformed
+  public void ingreso_nomina_detalle()
   {
+      if(((JTextField)fecha_inicial.getDateEditor().getUiComponent()).getText().equals("") && ((JTextField)fecha_final.getDateEditor().getUiComponent()).getText().equals(""))
+      {
+      JOptionPane.showMessageDialog(null,"PRIMERO DEBE GUARDAR LAS FECHAS DE LA PLANILLA");
+      }else{
+          fechas_nomina_encabezado();
+      for(int i = 0; i<=9;i++){
+      try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '5', '"+(String.valueOf(StrPlanilla[i][4]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+            //JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE BONIFICACION"+e);
+        }
+        try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '4', '"+(String.valueOf(StrPlanilla[i][5]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+            //JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE COMISION"+e);
+        }
+          try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '1', '"+(String.valueOf(StrPlanilla[i][6]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+           // JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE IGSS"+e);
+        }
+            try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '2', '"+(String.valueOf(StrPlanilla[i][7]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+            //JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE ISR"+e);
+        }
+              try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '3', '"+(String.valueOf(StrPlanilla[i][8]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+           // JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE DESCUENTOS JUDIACIALES"+e);
+        }
+                  try{
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");            
+            PreparedStatement pst = cn.prepareStatement("insert into detalle_nomina (codigo_nomina,codigo_empleado,codigo_concepto,valor_nomina_detalle) VALUES ('"+(j)+"', '"+(String.valueOf(StrPlanilla[i][1]))+"', '6', '"+(String.valueOf(StrPlanilla[i][9]))+"');");
+            pst.executeUpdate();           
+        }catch (Exception e){
+            //JOptionPane.showMessageDialog(null,"ERROR AL INGRESAR DATOS DE SUELDO LIQUIDO"+e);
+        }
+      }
+      }
+  }
+    public void fechas_nomina_encabezado()
+  {
+      for(int i = 0; i <=10;i++)
+      {
+         totalplanilla = totalplanilla + dep[i];
+      }
      try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/planilla", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into encabezado_nomina(codigo_nomina,fecha_inicial_nomina,fecha_final_nomina,valor_nomina) values('"+id+"','"+((JTextField)fecha_inicial.getDateEditor().getUiComponent()).getText()+"','"+((JTextField)fecha_final.getDateEditor().getUiComponent()).getText()+"','"+0.0+"')");
+            PreparedStatement pst = cn.prepareStatement("insert into encabezado_nomina(codigo_nomina,fecha_inicial_nomina,fecha_final_nomina,valor_nomina) values('"+id+"','"+((JTextField)fecha_inicial.getDateEditor().getUiComponent()).getText()+"','"+((JTextField)fecha_final.getDateEditor().getUiComponent()).getText()+"','"+totalplanilla+"')");
             pst.executeUpdate();
            
            JOptionPane.showMessageDialog(null,"INGRESO EXITOSO");

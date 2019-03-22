@@ -69,6 +69,11 @@ public class eliminacion_de_datos extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 280, -1));
 
         jButton3.setText("regresar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         pack();
@@ -95,6 +100,12 @@ public class eliminacion_de_datos extends javax.swing.JFrame {
              System.out.println("MENSAJE DE PRUEBA"+e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       MENUPRINCIPAL V = new MENUPRINCIPAL();
+       V.show();
+       dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
