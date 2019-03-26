@@ -4,6 +4,8 @@ NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
 */
 package ListasEnlazadas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author EDUARDO
@@ -74,5 +76,30 @@ public class ListasEnlazadas
 			anterior.Siguiente=actual.Siguiente;
 		}
 	}
+        public String buscar(String posicion)
+	{
+	int dato = 0;
+        String posicion1 = null ;
+        Nodo aux  = Primero;
+        Nodo sig ;
+        do{
+            if(Integer.toString(aux.info).equals(posicion))
+            {
+             aux = null;
+             sig = null;
+             posicion1 = Integer.toString(dato);
+            }else
+            {
+            dato ++;
+            aux = aux.Siguiente;
+            sig = aux.Siguiente;
+            if(sig  == null)
+                posicion1 = "el dato no esta en la lista";
+            }
+        }while(sig!=null);
+        return(posicion1);
+        }
+        public void borrar()
+        {}
 
 }
