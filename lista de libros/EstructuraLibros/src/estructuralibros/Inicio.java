@@ -56,31 +56,39 @@ public class Inicio {
            JOptionPane.showMessageDialog(null,"LOS DATOS SE GUARDARON EXITOSAMENTE");
             break;
         case 4:
+            //elimina el primer dato de la lista
            milista.eliminaPrincipio();
            JOptionPane.showMessageDialog(null,"LOS DATOS SE ELIMINARON EXITOSAMENTE");
            break;
         case 5:
+            //elimina el ultimo dato de la lista
            milista.eliminarUltimo();
            JOptionPane.showMessageDialog(null,"LOS DATOS SE ELIMINARON EXITOSAMENTE");
             break;
         case 6:
+            //elimina una posicion que el usuario desee
            posicion = JOptionPane.showInputDialog(null,"INGRESE LA POSICION EN LA QUE DESEA ELIMINAR LOS DATOS");
            posicionnodo = Integer.parseInt(posicion);
            milista.eliminarLibro(posicionnodo);
            JOptionPane.showMessageDialog(null,"LOS DATOS SE ELIMINARON EXITOSAMENTE");
             break;
         case 7:
+            //muestra el dato buscado por el usuario
            posicion = JOptionPane.showInputDialog(null,"INGRESE LA POSICION EN LA QUE DESEA BUSCAR LOS DATOS");
            posicionnodo = Integer.parseInt(posicion);
            JOptionPane.showMessageDialog(null,milista.obtener(posicionnodo) );
             break;
         case 8:
-            milista.estaVacia();
+            //MUESTRA SI LA LISTA ESTA VACIA
+            JOptionPane.showMessageDialog(null,"LA LISTA ESTA VACIA: "+milista.estaVacia());
             break;
         case 9:
-            milista.contar();
+            //MUESTRA LA CANTIDAD DE DATOS DE LA LISTA
+            JOptionPane.showMessageDialog(null,"LA LISTA TIENE : "+milista.contar()+" NODOS");
+           
             break;
         case 10:
+            //MUESTRA LOS DATOS DE LA LISTA
            JOptionPane.showMessageDialog(null,milista.Listar());
             break;
     }
