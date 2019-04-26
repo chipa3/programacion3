@@ -12,7 +12,6 @@ public class Pilas {
     public static int op,posicionnodo,opcionwhile;
     public static  datos libro;
     public static  procesos milista = new procesos();
-    //funcion que permite ingresar los datos a variables
     public static void ingreso()
     {
     titulo = JOptionPane.showInputDialog(null,"INGRESE EL TITULO DEL LIBRO");
@@ -22,7 +21,7 @@ public class Pilas {
     }
   public static void menup()
   {
-    opcion = JOptionPane.showInputDialog(null,",MENU DE OPCIONES:\n1.INGRESAR DATOS\n2.ELIMINAR DATOS\n3.MOSTRAR DATOS\n4.ULTIMO DATO");
+    opcion = JOptionPane.showInputDialog(null,",MENU DE OPCIONES:\n1.INGRESAR DATOS\n2.ELIMINAR DATOS\n3.MOSTRAR DATOS\n4.ULTIMO DATO\n5.VER SI ESTA VACIA LA PILA\n6.VACIAR PILA");
     op = Integer.parseInt(opcion);  
   }
   public static void menuregresar()
@@ -33,19 +32,15 @@ public class Pilas {
    public static void main(String[] args)
    {
     do{
-        //menu principal de opciones
     menup();
     switch(op)
     {
         case 1:
-            //ingreso de datos a la clase libro
            ingreso();
-           //envio de datos a la funcion de insertar al incio de la lista
            milista.push(libro);
            JOptionPane.showMessageDialog(null,"LOS DATOS SE GUARDARON EXITOSAMENTE");
             break;
         case 2: 
-
            milista.pop();
            JOptionPane.showMessageDialog(null,"EL DATO SE ELIMINO CORRECTAMENTE");
             break;
@@ -55,8 +50,14 @@ public class Pilas {
               case 4: 
            JOptionPane.showMessageDialog(null,milista.top());
             break;
+              case 5: 
+           JOptionPane.showMessageDialog(null,milista.vacia());
+            break;
+              case 6: 
+                  milista.Vaciar();
+           JOptionPane.showMessageDialog(null,"SE HA VACIADO LA PILA CORRECTAMENTE");
+            break;
     }
-    //menu sobre si desea salir o no del programa
     menuregresar();
     }while(opcionwhile != 1);
    }

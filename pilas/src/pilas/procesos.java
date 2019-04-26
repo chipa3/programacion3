@@ -86,5 +86,25 @@ public class procesos {
                 }
             }
         }
-   
+       public String vacia () {
+            if (cabeza == null ) {
+                return ("La pila esta vacia ");
+            } else {
+                return " La pila no esta vacia " ;
+            }
+           
+        }
+          public void Vaciar() {
+          
+            if (cabeza != null) {
+              
+                Nodo primer = cabeza;
+              
+                cabeza = cabeza . siguiente = null ;
+              
+                cabeza = null ;
+               
+                longitud = 0 ;
+            }
+        }
 }
