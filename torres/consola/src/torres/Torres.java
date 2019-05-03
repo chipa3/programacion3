@@ -1,3 +1,7 @@
+/*
+NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
+0901-17-12
+*/
 package torres;
 
 import java.util.Scanner;
@@ -11,6 +15,7 @@ public class Torres {
        discos = JOptionPane.showInputDialog(null, "INGRESE LA CANTIDAD DE DISCOS QUE DESEA");
        cantidad = Integer.parseInt(discos);
         int movimientos = (int)(Math.pow(2, cantidad) -1);
+        System.out.println("LA CANTIDAD DE DISCOS ES "+cantidad);
         System.out.println("EL NUMERO MINIMO DE MOVIMIENTOS ES "+movimientos);
         for(int i = 1; i <= cantidad; i++)
         {
@@ -21,14 +26,20 @@ public class Torres {
     }
  
     public static void jannoi(int cantidad, int inicio,int auxiliar, int destino) {
-       
-       if(cantidad == 1){
-           System.out.println("["+cantidad+"] DE LA TORRE"+inicio+" A LA TORRE "+destino);
-       }else{
-           jannoi(cantidad - 1,inicio, destino, auxiliar);
-             System.out.println("["+cantidad+"] DE LA TORRE "+inicio+" A LA TORRE "+destino);
-             jannoi(cantidad - 1,auxiliar, inicio, destino);
+    
+        if(cantidad == 1)
+       {
+          System.out.println("DISCO: ["+cantidad+"] DE LA TORRE "+inicio+" A LA TORRE "+destino);   
        }
+       else
+            {
+                jannoi(cantidad - 1,inicio, destino, auxiliar);
+                
+                System.out.println("DISCO: ["+cantidad+"] DE LA TORRE "+inicio+" A LA TORRE "+destino);
+                
+                jannoi(cantidad - 1,auxiliar, inicio, destino);
+            }
         }
+  
     }
 
