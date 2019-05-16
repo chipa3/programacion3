@@ -23,51 +23,7 @@ public class codigo_arboles extends javax.swing.JFrame {
         this.setTitle("CODIGO ARBOLES");
         this.setLocationRelativeTo(codigo_arboles.this);
         this.setResizable(false);
-        File archivo= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\arboles\\Nodo.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea1.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        }
-           
-            File archivo1= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\arboles\\ArbolBB.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo1));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea2.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        }
-            File archivo2= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\arboles\\ArbolExpresionGrafico.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo2));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea3.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        }
-                File archivo3= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\arboles\\SimuladorArbolBinario.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo3));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea4.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        }
+       
     }
 
     /**
@@ -92,20 +48,26 @@ public class codigo_arboles extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("/*\n * To change this license header, choose License Headers in Project Properties.\n * To change this template file, choose Tools | Templates\n * and open the template in the editor.\n */\npackage arbolBB;\n\nimport java.util.ArrayList;\nimport java.util.LinkedList;\nimport javax.swing.JPanel;\n\n/**\n *\n * @author .\n */\n\npublic class ArbolBB {\n\n    private Nodo raiz;\n    int num_nodos;\n    int alt;\n\n    public ArbolBB() {\n        raiz = null;\n    }\n    \n    public boolean agregar(int dato) {\n        Nodo nuevo = new Nodo(dato, null, null);\n        insertar(nuevo, raiz);\n        return true;\n    }\n    \n    //Metodo para insertar un dato en el arbol...no acepta repetidos :)\n    public void insertar(Nodo nuevo, Nodo pivote) {\n        if (this.raiz == null) {\n            raiz = nuevo;\n        } else {\n            if (nuevo.getDato() <= pivote.getDato()) {\n                if (pivote.getIzq() == null) {\n                    pivote.setIzq(nuevo);\n                } else {\n                    insertar(nuevo, pivote.getIzq());\n                }\n            } else {\n                if (pivote.getDer() == null) {\n                    pivote.setDer(nuevo);\n                } else {\n                    insertar(nuevo, pivote.getDer());\n                }\n            }\n        }\n\n    }\n\n    public Nodo getRaiz() {\n        return raiz;\n    }\n\n    public void setRaiz(Nodo raiz) {\n        this.raiz = raiz;\n    }\n\n    //Recorrido preorden, recibe el nodo a empezar (raiz) y una linkedlist para ir guardando el recorrido\n    public LinkedList preOrden() {\n        LinkedList rec = new LinkedList();\n        preorden(raiz, rec);\n        return rec;\n    }\n    \n    public void preorden(Nodo aux, LinkedList recorrido) {\n        if (aux != null) {\n            recorrido.add(aux.getDato());\n            preorden(aux.getIzq(), recorrido);\n            preorden(aux.getDer(), recorrido);\n        }\n    }\n\n    //Recorrido inorden, recibe el nodo a empezar (raiz) y una linkedlist para ir guardando el recorrido\n    public LinkedList inOrden() {\n        LinkedList rec = new LinkedList();\n        inorden(raiz, rec);\n        return rec;\n    }\n    \n    public void inorden(Nodo aux, LinkedList recorrido) {\n        if (aux != null) {\n            inorden(aux.getIzq(), recorrido);\n            recorrido.add(aux.getDato());\n            inorden(aux.getDer(), recorrido);\n        }\n    }\n\n    //Recorrido postorden, recibe el nodo a empezar (raiz) y una linkedlist para ir guardando el recorrido\n    public LinkedList postOrden() {\n        LinkedList rec = new LinkedList();\n        postorden(raiz, rec);\n        return rec;\n    }\n    public void postorden(Nodo aux, LinkedList recorrido) {\n        if (aux != null) {\n            postorden(aux.getIzq(), recorrido);\n            postorden(aux.getDer(), recorrido);\n            recorrido.add(aux.getDato());\n        }\n    }\n\n    //Metodo para verificar si hay un nodo en el arbol\n    public boolean existe(int dato) {\n        Nodo aux = raiz;\n        while (aux != null) {\n            if (dato == aux.getDato()) {\n                return true;\n            } else if (dato > aux.getDato()) {\n                aux = aux.getDer();\n            } else {\n                aux = aux.getIzq();\n            }\n        }\n        return false;\n    }\n\n    private void altura(Nodo aux, int nivel) {\n        if (aux != null) {\n            altura(aux.getIzq(), nivel + 1);\n            alt = nivel;\n            altura(aux.getDer(), nivel + 1);\n        }\n    }\n\n    //Devuleve la altura del arbol\n    public int getAltura() {\n        altura(raiz, 1);\n        return alt;\n    }\n    \n     public JPanel getdibujo() {\n        return new ArbolExpresionGrafico(this);\n    }\n}\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 92, 468, 328));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setText("\npackage arbolBB;\n\n  /**\n *\n * @author\n */\n\nimport java.awt.*;\nimport java.util.*;\nimport javax.swing.*;\n\n\npublic class ArbolExpresionGrafico extends JPanel \n{\n    private ArbolBB miArbol;\n    private HashMap posicionNodos = null;\n    private HashMap subtreeSizes = null;\n    private boolean dirty = true;\n    private int parent2child = 20, child2child = 30;\n    private Dimension empty = new Dimension(0,0);\n    private FontMetrics fm = null;\n    \n    \n    /**\n     * Constructor de la clase ArbolExpresionGrafico.\n     * El constructor permite inicializar los atributos de la clase ArbolExpresionGrafico\n     * y llama al método repaint(), que es el encargado de pintar el Arbol.\n     * @param miExpresion: dato de tipo ArbolExpresion que contiene el Arbol a\n     * dibujar.\n     */\n    public ArbolExpresionGrafico(ArbolBB miArbol) \n    {\n          this.miArbol = miArbol;\n          this.setBackground(Color.WHITE);\n          posicionNodos = new HashMap();\n          subtreeSizes = new HashMap();\n          dirty = true;\n          repaint();      \n    }\n\n\n    /**\n     * Calcula las posiciones de los respectivos subárboles y de cada nodo que \n     * forma parte de ese subárbol, para conocer en que posición van a ir dibujados\n     * los rectángulos representativos del árbol de la expresión.\n     */\n    private void calcularPosiciones() \n    {\n         posicionNodos.clear();\n         subtreeSizes.clear();\n         Nodo root = this.miArbol.getRaiz();\n         if (root != null) \n         {\n             calcularTamañoSubarbol(root);\n             calcularPosicion(root, Integer.MAX_VALUE, Integer.MAX_VALUE, 0);\n         }\n    }\n    \n    /**\n     * Calcula el tamaño de cada subárbol y lo agrega al objeto subtreeSizes de la clase\n     * de tipo HashMap que va a contener la coleccion de todos los \n     * subárboles que contiene un arbol.\n     * @param n:Objeto de la clase NodoB <T> que se utiliza como\n     * referencia calcular el tamaño de cada subárbol.\n     * @return Dimension con el tamaño de cada subárbol.\n     */\n    private Dimension calcularTamañoSubarbol(Nodo n) \n    {\n          if (n == null) \n              return new Dimension(0,0);\n \n          Dimension ld = calcularTamañoSubarbol(n.getIzq());\n          Dimension rd = calcularTamañoSubarbol(n.getDer());\n          \n          int h = fm.getHeight() + parent2child + Math.max(ld.height, rd.height);\n          int w = ld.width + child2child + rd.width;\n          \n          Dimension d = new Dimension(w, h);\n          subtreeSizes.put(n, d);\n          \n          return d;\n    }\n    \n    \n    /**\n     * Calcula la ubicación de cada nodo de cada subárbol y agrega cada nodo con \n     * un objeto de tipo Rectangule que tiene la ubicación y la información específica de dónde \n     * va a ser dibujado.\n     * @param n: Objeto de tipo NodoB <T> que se utiliza como\n     * referencia para calcular la ubicación de cada nodo.\n     * @param left: int con alineación y orientación a la izquierda.\n     * @param right: int con alineación y orientación a la derecha.\n     * @param top: int con el tope.\n     */\n    private void calcularPosicion(Nodo n, int left, int right, int top) \n    {\n      if (n == null) \n          return;\n      \n      Dimension ld = (Dimension) subtreeSizes.get(n.getIzq());\n      if (ld == null) \n          ld = empty;\n      \n      Dimension rd = (Dimension) subtreeSizes.get(n.getDer());\n      if (rd == null) \n          rd = empty;\n      \n      int center = 0;\n      \n      if (right != Integer.MAX_VALUE)\n          center = right - rd.width - child2child/2;\n      else if (left != Integer.MAX_VALUE)\n          center = left + ld.width + child2child/2;\n      int width = fm.stringWidth(n.getDato()+\"\");\n \n      posicionNodos.put(n,new Rectangle(center - width/2 - 3, top, width + 6, fm.getHeight()));\n      \n      calcularPosicion(n.getIzq(), Integer.MAX_VALUE, center - child2child/2, top + fm.getHeight() + parent2child);\n      calcularPosicion(n.getDer(), center + child2child/2, Integer.MAX_VALUE, top + fm.getHeight() + parent2child);\n    }\n    \n    /**\n     * Dibuja el árbol teniendo en cuenta las ubicaciones de los nodos y los \n     * subárboles calculadas anteriormente.\n     * @param g: Objeto de la clase Graphics2D que permite realizar el dibujo de las líneas, rectangulos y del String de la información que contiene el Nodo.\n     * @param n: Objeto de la clase NodoB <T> que se utiliza como referencia para dibujar el árbol.\n     * @param puntox: int con la posición en x desde donde se va a dibujar la línea hasta el siguiente hijo.\n     * @param puntoy: int con la posición en y desde donde se va a dibujar la línea hasta el siguiente hijo.\n     * @param yoffs: int con la altura del FontMetrics.\n     */\n    private void dibujarArbol(Graphics2D g, Nodo n, int puntox, int puntoy, int yoffs) \n    {\n     if (n == null) \n         return;\n     \n     Rectangle r = (Rectangle) posicionNodos.get(n);\n     g.draw(r);\n     g.drawString(n.getDato()+\"\", r.x + 3, r.y + yoffs);\n   \n     if (puntox != Integer.MAX_VALUE)\n       \n     g.drawLine(puntox, puntoy, (int)(r.x + r.width/2), r.y);\n     \n     dibujarArbol(g, n.getIzq(), (int)(r.x + r.width/2), r.y + r.height, yoffs);\n     dibujarArbol(g, n.getDer(), (int)(r.x + r.width/2), r.y + r.height, yoffs);\n     \n   }\n    \n\n   /**\n     * Sobreescribe el metodo paint y se encarga de pintar todo el árbol.\n     * @param g: Objeto de la clase Graphics.\n     */\n    @Override\n   public void paint(Graphics g) \n   {\n         super.paint(g);\n         fm = g.getFontMetrics();\n\n         if (dirty) \n         {\n           calcularPosiciones();\n           dirty = false;\n         }\n         \n         Graphics2D g2d = (Graphics2D) g;\n         g2d.translate(getWidth() / 2, parent2child);\n         dibujarArbol(g2d, this.miArbol.getRaiz(), Integer.MAX_VALUE, Integer.MAX_VALUE, \n                  fm.getLeading() + fm.getAscent());\n         fm = null;\n   }\n   \n }\n");
         jScrollPane2.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 92, 538, 328));
 
+        jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
+        jTextArea3.setText("/*\n * To change this license header, choose License Headers in Project Properties.\n * To change this template file, choose Tools | Templates\n * and open the template in the editor.\n */\npackage arbolBB;\n\n/**\n *\n * @author\n */\npublic class Nodo {\n    private int dato;\n    private Nodo izq,der;\n\n    public Nodo(int dato, Nodo izq, Nodo der) {\n        this.dato = dato;\n        this.izq = izq;\n        this.der = der;\n    }\n\n    public int getDato() {\n        return dato;\n    }\n\n    public void setDato(int dato) {\n        this.dato = dato;\n    }\n\n    public Nodo getIzq() {\n        return izq;\n    }\n\n    public void setIzq(Nodo izq) {\n        this.izq = izq;\n    }\n\n    public Nodo getDer() {\n        return der;\n    }\n\n    public void setDer(Nodo der) {\n        this.der = der;\n    }\n \n}\n");
         jScrollPane3.setViewportView(jTextArea3);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 446, 468, 325));
@@ -118,8 +80,10 @@ public class codigo_arboles extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 25, 460, -1));
 
+        jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setText("package arbolBB;\n\nimport java.util.ArrayList;\nimport java.util.LinkedList;\nimport javax.swing.JPanel;\n\n/**\n *\n * @author\n */\npublic class SimuladorArbolBinario {\n\n    ArbolBB miArbol = new ArbolBB();\n\n    public SimuladorArbolBinario() {\n    }\n\n    public boolean insertar(Integer dato) {\n        return (this.miArbol.agregar(dato));\n    }\n    //metodo para mostrar los recorridos del arbol\n    public String preOrden() {\n        LinkedList it = this.miArbol.preOrden();\n        return (recorrido(it, \"Recorrido PreOrden\"));\n    }\n\n    public String inOrden() {\n        LinkedList it = this.miArbol.inOrden();\n        return (recorrido(it, \"Recorrido InOrden\"));\n    }\n\n    public String postOrden() {\n        LinkedList it = this.miArbol.postOrden();\n        return (recorrido(it, \"Recorrido PosOrden\"));\n    }\n    \n    //metodo para poder mostrar los tipos d recorrido\n    private String recorrido(LinkedList it, String msg) {\n        int i = 0;\n        String r = msg + \"\\n\";\n        while (i < it.size()) {\n            r += \"\\t\" + it.get(i).toString() + \"\";\n            i++;\n        }\n        return (r);\n    }\n    \n    \n    //Metodo para buscar dato en el nodo\n    public String buscar(Integer dato) {\n        boolean siEsta = this.miArbol.existe(dato);\n        String r = \"El dato:\" + dato.toString() + \"\\n\";\n        r += siEsta ? \"Si se encuentra en el arbol\" : \"No se encuentra en el arbol\";\n        return (r);\n    }\n\n    public JPanel getDibujo() {\n        return this.miArbol.getdibujo();\n    }\n}\n");
         jScrollPane4.setViewportView(jTextArea4);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 540, 320));

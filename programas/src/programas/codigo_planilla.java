@@ -5,36 +5,35 @@
  */
 package programas;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author jose lopez
  */
 public class codigo_planilla extends javax.swing.JFrame {
-
+    private FileNameExtensionFilter filtro = new FileNameExtensionFilter("ARCHIVOS TXT","txt");
     /**
      * Creates new form codigo_planilla
      */
     public codigo_planilla() {
         initComponents();
+        
          this.setTitle("CODIGO PLANILLA SIN BASE DE DATOS");
         this.setLocationRelativeTo(codigo_planilla.this);
         this.setResizable(false);
-        File archivo= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\´planilla sin base de datos\\lab3.txt");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea1.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
         
-        }
     }
 
     /**
@@ -53,11 +52,13 @@ public class codigo_planilla extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("/*\nNOMBRE:JOSE ESTANISLAO LOPEZ TUBAC\n0901-17-12\nEste programa realiza los calculos para una planilla con distintos empleados, de diferentes departamentos\n */\npackage laboratorio3;\nimport java.text.DecimalFormat;\nimport java.util.Scanner;\n\nimport javax.swing.JOptionPane;\nimport static laboratorio3.Laboratorio3.nomb;\npublic class Laboratorio3 {\n    //declaracion de variables globales\n    public static String plani[][] = new String[10][11];\n    public static String nomb[] = {\"jose\" ,\"laib  \",\" carlos\",\"daniel\",\"javier\",\"brian\",\"bryan\",\"kike\",\"ricardo\",\"richi\"};\n\n    public static Scanner lector = new Scanner(System.in);\n    public static float dep[] = new float[5]; \n    public static  String ISR[][] = new String[10][3];\n    public static  int intcodemp = 0,intsueldobase = 0,intdescuento,intconversueldo,intbonificacion,intpercepciones,intopcion,intcomision,opcion,intsueldoliquido,intdep = 0;\n    public static float fltigss,fltsueldoliquido,fltsumatoria,fltisr = 0,fltdeducciones;\n    public static double fltvalorigss = 0.0483;\n    public static float fltisr1 = (float) 0.03 , fltisr2 = (float) 0.05, fltisr3 = (float) 0.1;\n    public static  DecimalFormat df = new DecimalFormat(\"#.00\");\n    public static String op;\n        \n    //comentarios de prueba 1\n    //comentarios de prueba 2\n    //comentarios de prueba 3\n    public static int codigodep(int j)\n    {\n    //CODIGO RANDOM DE LOS DEPARTAMENTOS    \n    intdep = (int) (1 + (Math.random()*5));                \n    return intdep;\n    }\n    public static int codigoemp(int j)\n    {\n     //CODIGO RANDOM DE LOS EMPLEADOS   \n    intcodemp = (int) (1 + (Math.random()*200));                \n    return intcodemp;\n    }\n    public static void main(String[] args) {\n        \n       do{\n        //LLENADO DE LA MATRIZ CON RANDOM Y OPERACIONES\n            llenadomatriz();\n        //SE MUESTRA LA MATRIZ\n            resultados();\n        //SE OPERAN Y MUESTRAN RESULTADOS POR DEPARTAMENTOS\n            totaldep();\n        //SE OPERAN Y MUESTRAN RESULTADOS DE IGSS POR \n            isremp();\n        //MENU PARA EL CICLO DO-WHILE\n            menuregresar();    \n       }while(opcion!=2);\n    }\n   \n    public static void llenadomatriz()\n    {\n       \n         for(int j = 0;j <10;j++)\n                    {\n                     //lenado de codigos automaticos por medio de procesos\n                    plani[j][0]= Integer.toString(codigodep(intdep));//Llenado de numeros random para el codigo de departamento por medio de un proceso\n                    plani[j][1] = Integer.toString(codigoemp(intcodemp));//Llenado de numeros random para el codigo de empleado\n                    plani[j][2] = nomb[(int)((Math.random()*9))];//Llenado de nombres random \n                    intsueldobase = (int) (2500 + (Math.random()*10000)); //Llenados de numero\n                    plani[j][3] = Integer.toString(intsueldobase);\n                    intbonificacion = (int)((Math.random()*500)+1);\n                    plani[j][4] = Integer.toString(intbonificacion);\n                    intcomision = (int)((Math.random()*500)+ 1);\n                    plani[j][5] = Integer.toString(intcomision);\n                    //introduccion de la respúesta en la variable para ver si calcular el igss\n                    op = JOptionPane.showInputDialog(null,\"PLANILLA DE SALARIOS\\nEL EMPLEADO No.\"+(j+1)+\" PAGA IGSS?\\n1.SI\\n2.NO\");\n                    intopcion = Integer.parseInt(op);\n                    switch(intopcion)\n                    {\n                        case 1:\n                            fltigss = (float) (((intsueldobase + intcomision )*fltvalorigss));        \n                            plani[j][6] = String.valueOf(df.format(fltigss));\n                            plani[j][10] = \"SI\";\n                            break;\n                        case 2:\n                            fltigss = 0;                \n                            plani[j][6] = String.valueOf(df.format(fltigss));\n                            plani[j][10] = \"NO\";\n                            break;\n                 \n                    }\n                    intdescuento = (int)((Math.random()*500)+1);                   \n                    plani[j][7] = Integer.toString(intdescuento);\n                    \n                    if(intsueldobase >=2500 && intsueldobase <= 5000)\n                    {\n                    fltisr = (float) ((intsueldobase)*fltisr1);\n                    plani[j][8] = String.valueOf(df.format(fltisr));\n                    }else if(intsueldobase >5001 && intsueldobase <10000)\n                    {\n                     fltisr = (float) ((intsueldobase)*fltisr2); \n                     plani[j][8] = String.valueOf(df.format(fltisr));\n                    }else if(intsueldobase >=10001 )\n                    {\n                     fltisr = (float) ((intsueldobase)*fltisr3); \n                     plani[j][8] = String.valueOf(df.format(fltisr));\n                    }                                     \n                    percepciones();\n                    deducciones();\n                    sueldoliquido();\n                    plani[j][9] = String.valueOf(df.format(fltsueldoliquido));\n                     }\n    }\n    \n    public static void percepciones()\n    {\n        //asignacion de las percepciones a una variable\n     intpercepciones = intsueldobase + intbonificacion +intcomision;   \n    }\n     public static void deducciones()\n    {\n        //asignacion de las deducciones a una variable\n        fltdeducciones = fltigss +intdescuento + fltisr;\n    }\n     public static void sueldoliquido()\n    {\n      fltsueldoliquido = (intpercepciones-fltdeducciones);\n    }\n    public static void resultados()\n    {\n       //IMPRESION DE LA MATRIZ\n      System.out.println(\"______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________\");\n      System.out.println(\"No.DEPARTAMENTO\\t\\tCODIGO\\t\\tNOMBRE     \\t\\tSUELDO BASE\\t\\tBONIFICACION\\t\\tCOMISIONES\\t\\tIGSS     \\t\\t\\tDESCUENTOS J.\\t\\tISR\\t\\tSUELDO LIQUIDO\\t\\tPAGA IGSS\");\n      for(int i = 0; i <10;i++)\n      {    \n       System.out.println(\"\\t\"+plani[i][0]+\"\\t\\t\"+ plani[i][1]+\"\\t\\t\"+plani[i][2]+\"       \\t\\tQ.\"+plani[i][3]+\"\\t\\t\\tQ.\"\n               + \"\"+plani[i][4]+\"\\t\\t\\tQ.\"+plani[i][5]+\"\\t\\t\\tQ.\"+plani[i][6]+\"     \\t\\t\\tQ.\"+plani[i][7]+\"\\t\\t\\tQ.\"+plani[i][8]+\"  \\t\\tQ.\"+plani[i][9]+\"\\t\\t\"+plani[i][10]);\n       System.out.println(\"______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________\");\n      }     \n    }\n    public static void totaldep()\n    {\n    for(int i = 0; i<10;i++)\n      {\n          //en la variabel fltsumatoria se va a guardar lo que tiene la matriz en la posicion 9,convertido a un dato con decimal\n      fltsumatoria = Float.parseFloat(plani[i][9]);\n      if(plani[i][0].equals(\"1\"))\n      {\n         dep[0] = dep[0] + fltsumatoria;\n      }\n      if(plani[i][0].equals(\"2\"))\n      {\n          dep[1] = dep[1] + fltsumatoria;\n      }\n       if(plani[i][0].equals(\"3\"))\n      {\n         dep[2] = dep[2] + fltsumatoria;\n      }\n      if(plani[i][0].equals(\"4\"))\n      {\n        dep[3] = dep[3] + fltsumatoria;\n      }\n      if(plani[i][0].equals(\"5\"))\n      {\n          dep[4] = dep[4] + fltsumatoria;\n      }\n      }\n     System.out.println(\"TOTAL DE GASTO POR DEPARTAMENTO: \\n\");\n       for(int i = 0;i<=4;i++)\n       {\n           System.out.println(\"DEPATAMENTO \"+(i+1)+\":    \"+dep[i]+\"\\n\");\n       }\n    }\n    public static void isremp()\n    {\n    for(int i = 0; i <10; i++)\n       {\n           //en la variable intconversueldo se va a guardar lo que tiene la matriz en la posicion 3,convertido a un dato con entero\n       intconversueldo = Integer.parseInt(plani[i][3]);\n        if(intconversueldo >= 2500 && intconversueldo<=5000)\n        {\n          ISR[i][0] = plani[i][2];\n          ISR[i][1] = \"3%\";\n          ISR[i][2] = plani[i][8];\n        }\n        else if(intconversueldo >5000 && intconversueldo <=10000)\n        {\n          ISR[i][0] = plani[i][2];\n          ISR[i][1] = \"5%\";\n          ISR[i][2] = plani[i][8];\n        }\n        else if(intconversueldo >=  10001 && intconversueldo <= 100000)\n        {\n            ISR[i][0] = plani[i][2];\n            ISR[i][1] = \"10%\";\n            ISR[i][2] = plani[i][8];\n        } \n       }\n    System.out.println(\"PORCENTAJE DE ISR POR EMPLEADO: \\n\");\n       for(int i = 0;i<10;i++)\n       {\n           System.out.println(\"EMPLEADO \"+(i+1)+\":\"+ISR[i][0]+\"           \\t\\t\\tPAGA:\"+ISR[i][1]+\"     \\t\\t\\t\\tEL ISR ES:\"+ISR[i][2]);\n       }\n    }\n    public static void menuregresar()\n    {\n        //menu para ciclo do-while\n       System.out.println(\"\\n¿DESEA VOLVER A INGRESAR LOS NOMBRES?\\n1.si\\n2.no\");\n       opcion = lector.nextInt();\n    }\n    \n}\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 79, 780, 660));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 780, 660));
 
         jButton2.setText("REGRESAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +66,7 @@ public class codigo_planilla extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 29, 780, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 29, 380, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -75,7 +76,7 @@ public class codigo_planilla extends javax.swing.JFrame {
       m.show();
       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+             
     /**
      * @param args the command line arguments
      */

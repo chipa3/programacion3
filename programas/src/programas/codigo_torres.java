@@ -23,54 +23,7 @@ public class codigo_torres extends javax.swing.JFrame {
          this.setTitle("CODIGO LISTAS");
         this.setLocationRelativeTo(codigo_torres.this);
         this.setResizable(false);
-        File archivo= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\torres de hanoi\\Torres.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea1.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
         
-        }
-            File archivo1= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\torres de hanoi\\juego.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo1));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea2.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        
-        }
-            File archivo2= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\torres de hanoi\\Nodo.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo2));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea3.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        
-        }
-            File archivo3= new File("C:\\Users\\jose lopez\\Documents\\programas\\codigos\\torres de hanoi\\pila.java");
-          try {
-           BufferedReader leer = new BufferedReader(new FileReader(archivo2));
-           String linea = leer.readLine();
-           while(linea != null){
-               jTextArea4.append(linea+"\n");
-              linea = leer.readLine();
-           }
-          } catch (Exception ex) {
-          System.err.println("no se abrio bien el archivo"+ex.toString());
-        
-        }
     }
 
     /**
@@ -89,8 +42,6 @@ public class codigo_torres extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,29 +54,29 @@ public class codigo_torres extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 25, 460, -1));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("/*\nNOMBRE: JOSE ESTANISLAO LOPEZ TUBAC\n0901-17-12\n*/\npackage torres;\n\nimport java.util.Scanner;\nimport javax.swing.JOptionPane;\n\npublic class Torres {\n    public static void main(String[] args) {\n       Scanner leer = new Scanner (System.in);\n       String discos;\n       int cantidad;\n       discos = JOptionPane.showInputDialog(null, \"INGRESE LA CANTIDAD DE DISCOS QUE DESEA\");\n       cantidad = Integer.parseInt(discos);\n        int movimientos = (int)(Math.pow(2, cantidad) -1);\n        System.out.println(\"LA CANTIDAD DE DISCOS ES \"+cantidad);\n        System.out.println(\"EL NUMERO MINIMO DE MOVIMIENTOS ES \"+movimientos);\n        for(int i = 1; i <= cantidad; i++)\n        {\n           System.out.print(\"[\"+i+\"]\\n\"); \n        }\n        System.out.print(\"TORRE 1 \\tTORRE 2 \\tTORRE 3\\n\");\n       jannoi(cantidad,1,2,3);\n    }\n \n    public static void jannoi(int cantidad, int inicio,int auxiliar, int destino) {\n    \n        if(cantidad == 1)\n       {\n          System.out.println(\"DISCO: [\"+cantidad+\"] DE LA TORRE \"+inicio+\" A LA TORRE \"+destino);   \n       }\n       else\n            {\n                jannoi(cantidad - 1,inicio, destino, auxiliar);\n                \n                System.out.println(\"DISCO: [\"+cantidad+\"] DE LA TORRE \"+inicio+\" A LA TORRE \"+destino);\n                \n                jannoi(cantidad - 1,auxiliar, inicio, destino);\n            }\n        }\n  \n    }\n\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 92, 468, 328));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setText("package torres_de_hanoi;\n\npublic class pila {\n    private int contador = 0;\n    private Nodo cabeza;\n\n    public int getContador() {\n        return contador;\n    }\n\n    public Nodo getCabeza() {\n        return cabeza;\n    }\n    public void push(Nodo  N)\n    {\n        contador++;\n        if(cabeza ==  null)\n        {\n        cabeza = N;\n        }else\n        {\n        N.setAbajo(cabeza);\n        cabeza.setArriba(N);\n        cabeza = N;\n        }\n    }\n    public void pop()\n    {\n    if(contador > 0)\n    {\n        contador--;\n        cabeza = cabeza.getAbajo();\n    }\n    }\n    public String peek()\n    {\n        return cabeza.getDato();\n    }\n    \n}\n");
         jScrollPane2.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 510, 328));
 
+        jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
+        jTextArea3.setText("package torres_de_hanoi;\n\npublic class Nodo {\n  private String dato;\n  private Nodo arriba;\n  private Nodo abajo;\n\n    public String getDato() {\n        return dato;\n    }\n\n    public void setDato(String dato) {\n        this.dato = dato;\n    }\n\n    public Nodo getArriba() {\n        return arriba;\n    }\n\n    public void setArriba(Nodo arriba) {\n        this.arriba = arriba;\n    }\n\n    public Nodo getAbajo() {\n        return abajo;\n    }\n\n    public void setAbajo(Nodo abajo) {\n        this.abajo = abajo;\n    }\n  \n  \n  \n}\n");
         jScrollPane3.setViewportView(jTextArea3);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 446, 468, 325));
-
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 510, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,10 +127,8 @@ public class codigo_torres extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     // End of variables declaration//GEN-END:variables
 }
