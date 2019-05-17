@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton1" min="-2" pref="460" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane3" pref="468" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="538" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" pref="328" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="jScrollPane3" min="-2" pref="325" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="package estructuralibros;&#xa;&#xa;import javax.swing.JOptionPane;&#xa;&#xa;public class Inicio {&#xa;    public static String titulo, autor,isbn,opcion,posicion,menuregresar;&#xa;    public static int op,posicionnodo,opcionwhile;&#xa;    public static  Libro libro;&#xa;    public static  Lista milista = new Lista();&#xa;    //funcion que permite ingresar los datos a variables&#xa;    public static void ingreso()&#xa;    {&#xa;    titulo = JOptionPane.showInputDialog(null,&quot;INGRESE EL TITULO DEL LIBRO&quot;);&#xa;    autor = JOptionPane.showInputDialog(null,&quot;NGRESE EL AUTOR DEL LIBRO&quot;);&#xa;    isbn = JOptionPane.showInputDialog(null,&quot;INGRESE EL CODIGO&quot;);&#xa;    libro = new Libro(titulo,autor,isbn);&#xa;    }&#xa;  public static void menup()&#xa;  {&#xa;    opcion = JOptionPane.showInputDialog(null,&quot;INGRESE LA OPCION QUE DESEA:\u005cn1.INGRESAR AL PRINCIPIO\u005cn2.INSERTAR EN POSICION\u005cn3.INSERTAR AL FINAL\u005cn4.ELIMINAR EL PRIMERO\u005cn5.ELIMINAR EL FINAL\u005cn6.ELIMINAR POSICION&quot;&#xa;            + &quot;\u005cn7.BUSCAR LIBRO \u005cn8.VER SI LA LISTA ESTA VACIA\u005cn9.VER LA CANTIDAD DE NODOS\u005cn10.MOSTRAR&quot;);&#xa;    op = Integer.parseInt(opcion);  &#xa;  }&#xa;  public static void menuregresar()&#xa;  {&#xa;     menuregresar = JOptionPane.showInputDialog(null,&quot;&#xbf;DESEA SALIR DEL PROGRAMA?\u005cn1.SI\u005cn2.NO&quot;);&#xa;    opcionwhile = Integer.parseInt(menuregresar); &#xa;  }&#xa;   public static void main(String[] args)&#xa;   {&#xa;    do{&#xa;        //menu principal de opciones&#xa;    menup();&#xa;    switch(op)&#xa;    {&#xa;        case 1:&#xa;            //ingreso de datos a la clase libro&#xa;           ingreso();&#xa;           //envio de datos a la funcion de insertar al incio de la lista&#xa;           milista.insertarPrincipio(libro);&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE GUARDARON EXITOSAMENTE&quot;);&#xa;            break;&#xa;        case 2: &#xa;            posicion = JOptionPane.showInputDialog(null,&quot;INGRESE LA POSICION EN LA QUE DESEA INGRESAR LOS DATOS&quot;);&#xa;           posicionnodo = Integer.parseInt(posicion);&#xa;             //ingreso de datos a la clase libro&#xa;           ingreso();&#xa;           milista.insertarDespues(posicionnodo,libro);&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE GUARDARON EXITOSAMENTE&quot;);&#xa;            break;&#xa;        case 3:&#xa;              //ingreso de datos a la clase libro&#xa;           ingreso();&#xa;           milista.insertarFinal(libro);&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE GUARDARON EXITOSAMENTE&quot;);&#xa;            break;&#xa;        case 4:&#xa;            //elimina el primer dato de la lista&#xa;           milista.eliminaPrincipio();&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE ELIMINARON EXITOSAMENTE&quot;);&#xa;           break;&#xa;        case 5:&#xa;            //elimina el ultimo dato de la lista&#xa;           milista.eliminarUltimo();&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE ELIMINARON EXITOSAMENTE&quot;);&#xa;            break;&#xa;        case 6:&#xa;            //elimina una posicion que el usuario desee&#xa;           posicion = JOptionPane.showInputDialog(null,&quot;INGRESE LA POSICION EN LA QUE DESEA ELIMINAR LOS DATOS&quot;);&#xa;           posicionnodo = Integer.parseInt(posicion);&#xa;           milista.eliminarLibro(posicionnodo);&#xa;           JOptionPane.showMessageDialog(null,&quot;LOS DATOS SE ELIMINARON EXITOSAMENTE&quot;);&#xa;            break;&#xa;        case 7:&#xa;            //muestra el dato buscado por el usuario&#xa;           posicion = JOptionPane.showInputDialog(null,&quot;INGRESE LA POSICION EN LA QUE DESEA BUSCAR LOS DATOS&quot;);&#xa;           posicionnodo = Integer.parseInt(posicion);&#xa;           JOptionPane.showMessageDialog(null,milista.obtener(posicionnodo) );&#xa;            break;&#xa;        case 8:&#xa;            //MUESTRA SI LA LISTA ESTA VACIA&#xa;            JOptionPane.showMessageDialog(null,&quot;LA LISTA ESTA VACIA: &quot;+milista.estaVacia());&#xa;            break;&#xa;        case 9:&#xa;            //MUESTRA LA CANTIDAD DE DATOS DE LA LISTA&#xa;            JOptionPane.showMessageDialog(null,&quot;LA LISTA TIENE : &quot;+milista.contar()+&quot; NODOS&quot;);&#xa;           &#xa;            break;&#xa;        case 10:&#xa;            //MUESTRA LOS DATOS DE LA LISTA&#xa;           JOptionPane.showMessageDialog(null,milista.Listar());&#xa;            break;&#xa;    }&#xa;    //menu sobre si desea salir o no del programa&#xa;    menuregresar();&#xa;    }while(opcionwhile != 1);&#xa;   }&#xa;    &#xa;}&#xa;" containsInvalidXMLChars="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea2">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="/*&#xa; * To change this license header, choose License Headers in Project Properties.&#xa; * To change this template file, choose Tools | Templates&#xa; * and open the template in the editor.&#xa; */&#xa;package estructuralibros;&#xa;&#xa;/**&#xa; *&#xa; * @author alumno&#xa; */&#xa;public class Libro {&#xa;        &#xa;&#x9;private String titulo;&#xa;&#x9;private String autor;&#xa;&#x9;private String isbn;&#xa;&#x9;public Libro(String titulo, String autor, String isbn) {&#xa;&#x9;&#x9;this.titulo=titulo;&#xa;&#x9;&#x9;this.autor=autor;&#xa;&#x9;&#x9;this.isbn=isbn;&#xa;&#x9;}&#xa;&#x9;public String getTitulo() {&#xa;&#x9;&#x9;return titulo;&#xa;&#x9;}&#xa;&#x9;public void setTitulo(String titulo) {&#xa;&#x9;&#x9;this.titulo=titulo;&#xa;&#x9;}&#xa;&#x9;public String getAutor() {&#xa;&#x9;&#x9;return autor;&#x9;&#xa;&#x9;}&#xa;&#x9;public void setAutor(String autor) {&#xa;&#x9;&#x9;this.autor=autor;&#xa;         &#xa;&#x9;}&#xa;&#x9;public String getIsbn() {&#xa;&#x9;&#x9;return isbn;&#xa;&#x9;}&#xa;&#x9;public void setIsbn(String isbn) {&#xa;&#x9;&#x9;this.isbn=isbn;&#xa;           &#xa;&#x9;}&#xa;    }&#xa;"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea3">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="package estructuralibros;&#xa;&#xa;public class Lista {&#xa;  &#xa;&#x9;private Nodo cabeza=null;//CREACION DE UN NODO CABEZA NULO&#xa;&#x9;private int longitud=0;&#xa;&#x9;private class Nodo {&#xa;&#x9;&#x9;public Libro libro;//CREA UNA VARIABLE DE TIPO LIBRO&#xa;&#x9;&#x9;public Nodo siguiente=null;//CREA UN NODO SIGUIENTE NULO&#xa;        public Nodo(Libro libro)&#xa;        {&#xa;            this.libro=libro;//LA VARIABLE LIBRO TENDRA LOS DATOS DE LA CLASE LIBRO&#xa;        }&#xa;        }&#xa;        public String Listar()&#xa;&#x9;{&#xa;&#x9;&#x9;String Dato=&quot; &quot;;&#xa;&#x9;&#x9;Nodo aux= cabeza;//CREA UN NODO QUE TIENE LA POSICION DE CABEZA&#xa;&#x9;&#x9;while (aux!=null)&#xa;&#x9;&#x9;{&#xa;                    //LA VARIABLE DATO SE IRA SUMANDO CON LOS DATOS QUE TIENE LA VARIABLE LIBRO&#xa;&#x9;&#x9;&#x9;Dato +=&quot;TITULO : &quot; + aux.libro.getTitulo()+ &quot;\u005cn AUTOR : &quot;+aux.libro.getAutor()+&quot;\u005cn ISBN : &quot;+aux.libro.getIsbn()+&quot;\u005cn&quot;;&#xa;&#x9;&#x9;&#x9;aux=aux.siguiente;&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;return(Dato);&#xa;&#x9;}&#xa;&#x9;public void insertarPrincipio(Libro libro) {&#xa;            //CREA UN NODO QUE TENDRA LO QUE SE INGRESE&#xa;&#x9;&#x9;Nodo nodo=new Nodo(libro);&#xa;                //NODO.SIGUENTES VA A TENER LA DIRECCION DEL PRIMER NODO&#xa;&#x9;&#x9;nodo.siguiente=cabeza;&#xa;                //CABEZA VA A PUNTAR AL NODO&#xa;&#x9;&#x9;cabeza=nodo;&#xa;                //SE IRAN SUMANDO CONFORME SE INGRESEN LOS DATOS&#xa;&#x9;&#x9;longitud++;&#x9;&#xa;&#x9;}&#xa;&#x9;public void insertarFinal(Libro libro) {&#xa;            //CREA UN NODO QUE TENDRA LO QUE SE LE INGRESE&#xa;&#x9;&#x9;Nodo nodo=new Nodo(libro);&#xa;                //SI CABEZA ES IGUAL A NULO&#xa;&#x9;&#x9;if (cabeza==null) {&#xa;                    //LO INGRESARA EN CABEZA&#xa;&#x9;&#x9;&#x9;cabeza=nodo;&#xa;                        //DE LO CONTRARIO LE ASIGNARA UN PUNTERO A CUAL INGRESAR LOS DATOS&#xa;&#x9;&#x9;} else {&#xa;&#x9;&#x9;&#x9;Nodo puntero=cabeza;&#xa;&#x9;&#x9;&#x9;while (puntero.siguiente!=null) {&#xa;&#x9;&#x9;&#x9;&#x9;puntero=puntero.siguiente;&#xa;&#x9;&#x9;&#x9;}&#xa;&#x9;&#x9;&#x9;puntero.siguiente=nodo;&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;longitud++;&#xa;&#x9;}&#xa;&#x9;public void insertarDespues(int n, Libro libro) {&#xa;            //CREA UN NODO QUE TENDRA LO QUE SE LE INGRESE&#xa;&#x9;&#x9;Nodo nodo=new Nodo(libro);&#xa;                 //SI CABEZA ES IGUAL A NULO&#xa;&#x9;&#x9;if (cabeza==null) {&#xa;                    //LO INGRESARA EN EL PRIMER NODO&#xa;&#x9;&#x9;&#x9;cabeza=nodo;&#xa;&#x9;&#x9;} else {&#xa;                    //DE LO CONTRARIO BUSCARA LA ULTIMA POSICION Y LO INGRESARA&#xa;&#x9;&#x9;&#x9;Nodo puntero=cabeza;&#xa;&#x9;&#x9;&#x9;int contador=0;&#xa;&#x9;&#x9;&#x9;while (contador&lt;n &amp;&amp; puntero.siguiente!=null) {&#xa;&#x9;&#x9;&#x9;&#x9;puntero=puntero.siguiente;&#xa;&#x9;&#x9;&#x9;&#x9;contador++;&#xa;&#x9;&#x9;&#x9;}&#xa;&#x9;&#x9;&#x9;nodo.siguiente=puntero.siguiente;&#xa;&#x9;&#x9;&#x9;puntero.siguiente=nodo;&#xa;&#x9;&#x9;}&#xa;&#x9;&#x9;longitud++;&#xa;&#x9;}&#xa;&#x9;public String obtener(int n) {&#xa;            &#xa;            String datos = &quot;&quot;;&#xa;            //SI LA LISTA ESTA VACIA RETORNARA NULO&#xa;&#x9;&#x9;if (cabeza==null) {&#xa;&#x9;&#x9;&#x9;return null;&#xa;&#x9;&#x9;} else {&#xa;                    //DE LO CONTRARIO BUSCARA EL PUNTERO O LA DIRECCION QUE TIENE LA POSICION DESEADA &#xa;&#x9;&#x9;&#x9;Nodo puntero=cabeza;&#xa;&#x9;&#x9;&#x9;int contador=0;&#xa;                        //MIENTRAS CONTADOR SEA MENOR A LA POSICION BUSCADA Y EL PUNTERO SEA DISTINTO A NULO &#xa;&#x9;&#x9;&#x9;while (contador&lt;n &amp;&amp; puntero.siguiente!=null) {&#xa;                            //PUNTERO TENDRA LA POSICION DEL QUE SE BUSCA&#xa;&#x9;&#x9;&#x9;&#x9;puntero=puntero.siguiente;&#xa;&#x9;&#x9;&#x9;&#x9;contador++;&#xa;&#x9;&#x9;&#x9;}&#xa;                        //SI NO SE ENCUENTRA LA POSICION DESEADA RETORNARA NILO&#xa;&#x9;&#x9;&#x9;if (contador!=n) {&#xa;&#x9;&#x9;&#x9;&#x9;return null;&#xa;&#x9;&#x9;&#x9;} else {&#xa;                            //SI SE ENCUENTRA LA POSICION DESEADA MANDARA LA VARIABLE DATOS&#xa;&#x9;&#x9;&#x9;&#x9;datos +=&quot;TITULO : &quot; + puntero.libro.getTitulo()+ &quot;\u005cn AUTOR : &quot;+puntero.libro.getAutor()+&quot;\u005cn ISBN : &quot;+puntero.libro.getIsbn()+&quot;\u005cn&quot;;&#xa;                                return datos;&#xa;&#x9;&#x9;&#x9;}&#xa;&#x9;&#x9;}&#xa;&#x9;}&#xa;&#x9;public int contar() {&#xa;            //CUENTA LA CANTIDAD DE NODOS QUE TIENE LA LISTA&#xa;&#x9;&#x9;return longitud;&#xa;&#x9;}&#xa;        public boolean estaVacia() {&#xa;            //VERIFICA SI LA LISTA ESTA VACIA, SI ES ASI RETORNA NULO&#xa;            return cabeza==null;&#xa;        }&#xa;        public void eliminaPrincipio() {&#xa;            //VERIFICA SI LA DIRECCION ESTA VACIA, SI NO ESTA VACIA&#xa;            if (cabeza!=null){&#xa;                //NODO PRIMER TENDRA LA DIRECCION DE MEMORIA DEL PRIMER NODO&#xa;                Nodo primer = cabeza;&#xa;                //CEL SIGUIENTE NODO TENDRA LA DIRECCION DE NULO&#xa;                cabeza=cabeza.siguiente=null;&#xa;                longitud--;&#xa;                //SE IRAN RESTANDO LOS NODOS&#xa;            }&#xa;        }&#xa;        public void eliminarUltimo() {&#xa;            //VERIFICA SI LA DIRECCION ESTA VACIA, SI NO ESTA VACIA&#xa;            if (cabeza!= null) {&#xa;                //SI CABEZA.SIGUENTE ES DISTINTO A NULO&#xa;                if (cabeza.siguiente==null) {&#xa;                    //CABEZA SERA NULO&#xa;                    cabeza=null;  &#xa;                    //SE IRAN RESTANDO LOS NODOS&#xa;                    longitud--;&#xa;                } else {&#xa;                    //DE LO CONTRARIO EL PUNTERO SERA IGUAL A CABEZA&#xa;                    Nodo puntero=cabeza;&#xa;                    //MIENTRTAS EL PUNTERO SEA DISITINTO A NULO &#xa;                    while (puntero.siguiente.siguiente!=null) {   &#xa;                        //PUNTYERO SERA IGUAL A LA DIRECCION DEL SIGUIENTE NODO&#xa;                        puntero=puntero.siguiente;&#xa;                    }&#xa;                    puntero.siguiente=null;&#xa;                    longitud--;&#xa;                }&#xa;            }&#xa;        }&#xa;        public void eliminarLibro(int n) {&#xa;            if (cabeza!=null){&#xa;                //SI EL NUMERO INGRESADO POR EL USUARIO ES LA POSICION 0&#xa;                if (n==0){&#xa;                    //EL NODO PRIMERO TENDRA LA DIRECCION DE CABEZA&#xa;                    Nodo primer=cabeza;&#xa;                    //CABEZA SERA IGUAL AL LA DIRECCION DEL SIGUIENTE NODO&#xa;                    cabeza=cabeza.siguiente;&#xa;                    //EL NODO PRIMER. SIGUIENTE SERA IGUAL A NULO&#xa;                    primer.siguiente=null;&#xa;                    //SE IRAN RESTANDO LOS DATOS DE LA LISTA&#xa;                    longitud--;&#xa;                    //DE LO CONTRARIO SI EL DATO INGRESADO POR EL USUARIO ES MENOR A LOS DATOS QUE TIENE LA LISTA&#xa;                } else if (n&lt;longitud) {&#xa;                    Nodo puntero=cabeza;&#xa;                    int contador=0;&#xa;                    while (contador&lt;(n-1)){&#xa;                        puntero=puntero.siguiente;&#xa;                        contador++;&#xa;                    }&#xa;                    Nodo temp=puntero.siguiente;&#xa;                    puntero.siguiente=temp.siguiente;&#xa;                    temp.siguiente=null;&#xa;                    longitud--;&#xa;                }&#xa;            }&#xa;        }&#xa;}&#xa;" containsInvalidXMLChars="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="REGRESAR"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
