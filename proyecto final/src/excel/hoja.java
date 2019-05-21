@@ -6,15 +6,117 @@
 package excel;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
+import java.io.Serializable;
+import java.util.Vector;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
+
+class myDataModel extends DefaultTableModel implements TableCellRenderer {
+  public myDataModel() {
+    super(100, 100);
+    nuevo();
+  }
+
+  public void nuevo() {
+    int i, j;
+    for (i = 0; i <= super.getColumnCount() - 1; i++) {
+      for (j = 0; j <= super.getRowCount() - 1; j++) {
+        super.setValueAt(new CellData(), i, j);
+      }
+    }
+
+  }
+
+  public void setvect(Vector c) {
+    dataVector = null;
+    dataVector = c;
+  }
+
+  public void setColorAt(Color val, int r, int c) {
+    CellData b = (CellData)super.getValueAt(r, c);
+    b.b = val;
+  }
+
+  public void setFColorAt(Color val, int r, int c) {
+    CellData b = (CellData)super.getValueAt(r, c);
+    b.f = val;
+  }
+
+  public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+    if (aValue instanceof CellData) {
+      super.setValueAt(aValue, rowIndex, columnIndex);
+    } else {
+      CellData b = (CellData)super.getValueAt(rowIndex, columnIndex);
+      b.s = aValue.toString();
+      super.setValueAt(b, rowIndex, columnIndex);
+    }
+  }
+
+  public Component getTableCellRendererComponent(JTable tabla, Object value,
+                                                 boolean isSelected,
+                                                 boolean hasFocus, int row,
+                                                 int column) {
+    DefaultTableCellRenderer f = new DefaultTableCellRenderer();
+    if (value instanceof CellData && !isSelected) {
+      CellData b = (CellData)super.getValueAt(row, column);
+      f.setBackground(b.b);
+      f.setForeground(b.f);
+      f.setText(b.s);
+      return (Component)f;
+    } else if (hasFocus) {
+      CellData b = (CellData)super.getValueAt(row, column);
+      Color t =
+        new Color(255 - b.b.getRed(), 255 - b.b.getGreen(), 255 - b.b.getBlue());
+      f.setBackground(t);
+      f.setForeground(new Color(255 - t.getRed(), 255 - t.getGreen(),
+                                255 - t.getBlue()));
+      f.setText(b.s);
+      return (Component)f;
+
+    } else {
+      return f.getTableCellRendererComponent(tabla, value, isSelected,
+                                             hasFocus, row, column);
+    }
+  }
+}
+
+//	Dato de Celda, para poder Guardar y Copiar las Celdas	//
+class CellData extends Object implements Serializable, Cloneable {
+  public String s = new String("");
+  public Color b = Color.white;
+  public Color f = Color.black;
+
+  public CellData() {
+  }
+
+  public String toString() {
+    return s;
+  }
+
+  protected Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+}
+
+
+
+
+
+
+
+
 
 
 public class hoja extends javax.swing.JFrame {
     DefaultTableModel modelo  = new DefaultTableModel();
+      myDataModel data = new myDataModel();
     /**
      * Creates new form hoja
      */
@@ -27,6 +129,7 @@ public class hoja extends javax.swing.JFrame {
         tcm.getColumn(0).setResizable(false);
         tcm.getColumn(0).setPreferredWidth(25);
         jTable1.getTableHeader().setReorderingAllowed(false);
+        
    
     }
 
@@ -413,8 +516,19 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        Color fondo = JColorChooser.showDialog(rootPane,"COLOR", this.getBackground()); 
-          jTable1.setBackground(fondo);
+
+        
+          Color fon = 
+                  JColorChooser.showDialog(rootPane,"COLOR", Color.black); 
+          int[] a = jTable1.getSelectedColumns(), b = jTable1.getSelectedRows();
+          int i, j;
+          for (i = 0; i <= a.length - 1; i++) {
+            for (j = 0; j <= b.length - 1; j++) {
+              data.setColorAt(fon, b[j], a[i]);
+            }
+          }
+          jTable1.clearSelection();
+        
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
