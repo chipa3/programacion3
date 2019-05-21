@@ -9,13 +9,12 @@ import java.awt.Color;
 import java.io.File;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
-/**
- *
- * @author jose lopez
- */
+
 public class hoja extends javax.swing.JFrame {
-
+    DefaultTableModel modelo  = new DefaultTableModel();
     /**
      * Creates new form hoja
      */
@@ -24,6 +23,11 @@ public class hoja extends javax.swing.JFrame {
         initComponents();
         this.setTitle("HOJA DE CALCULO");
         this.setLocationRelativeTo(hoja.this);
+        TableColumnModel tcm = jTable1.getColumnModel();
+        tcm.getColumn(0).setResizable(false);
+        tcm.getColumn(0).setPreferredWidth(25);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+   
     }
 
    
@@ -280,9 +284,9 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
         JFileChooser guardar = new JFileChooser();
         guardar.showSaveDialog(this);
+        
       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -423,7 +427,22 @@ public class hoja extends javax.swing.JFrame {
        d.show();
        dispose();
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-
+    public String[][] obtenerInformacion()
+    {
+       int numFilas = modelo.getRowCount(); 
+       int numColumna = modelo.getColumnCount();
+       String matriz[][] = new String[numFilas][numColumna];
+       for(int rowIndex = 0; rowIndex < numFilas; rowIndex ++)
+       {
+          for(int colIndex = 0; colIndex < numColumna;colIndex++) 
+          {
+              
+              matriz[rowIndex][colIndex] = (String)modelo.getValueAt(rowIndex,colIndex);
+          }    
+        
+    }
+       return matriz;
+    }
     /**
      * @param args the command line arguments
      */
