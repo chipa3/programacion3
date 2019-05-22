@@ -7,9 +7,14 @@ package excel;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
@@ -60,9 +65,9 @@ class myDataModel extends DefaultTableModel implements TableCellRenderer {
   }
 
   public Component getTableCellRendererComponent(JTable tabla, Object value,
-                                                 boolean isSelected,
-                                                 boolean hasFocus, int row,
-                                                 int column) {
+    boolean isSelected,
+     boolean hasFocus, int row,
+     int column) {
     DefaultTableCellRenderer f = new DefaultTableCellRenderer();
     if (value instanceof CellData && !isSelected) {
       CellData b = (CellData)super.getValueAt(row, column);
@@ -143,7 +148,7 @@ public class hoja extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        Mnabrir = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -275,6 +280,7 @@ public class hoja extends javax.swing.JFrame {
             }
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable1.setCellSelectionEnabled(true);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -295,13 +301,13 @@ public class hoja extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("ABRIR");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        Mnabrir.setText("ABRIR");
+        Mnabrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                MnabrirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(Mnabrir);
 
         jMenuItem3.setText("NUEVO");
         jMenu1.add(jMenuItem3);
@@ -380,19 +386,20 @@ public class hoja extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void MnabrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnabrirActionPerformed
          
-        JFileChooser abrir = new JFileChooser();
-        abrir.showSaveDialog(this);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        /*JFileChooser abrir = new JFileChooser();
+        abrir.showSaveDialog(this);*/
+    }//GEN-LAST:event_MnabrirActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         JFileChooser guardar = new JFileChooser();
         guardar.showSaveDialog(this);
         
+        
       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+ 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -570,13 +577,13 @@ public class hoja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Mnabrir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
