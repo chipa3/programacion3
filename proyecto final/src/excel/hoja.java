@@ -8,6 +8,7 @@ package excel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
@@ -129,6 +131,10 @@ public class hoja extends javax.swing.JFrame {
     public hoja() {
         
         initComponents();
+        //Coloca Jframe en pantalla completa
+        this.setExtendedState(MAXIMIZED_BOTH);
+        //Le coloca icono a al jFrame y también al icono de barra de tarea
+        this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());
         this.setTitle("HOJA DE CALCULO");
         this.setLocationRelativeTo(hoja.this);
         TableColumnModel tcm = jTable1.getColumnModel();
