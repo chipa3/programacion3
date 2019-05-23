@@ -8,59 +8,53 @@ import javax.swing.JPanel;
 
  
 public class ArbolBB {
-
+    //se crea una variable raiz de tipo nodo 
     private Nodo raiz;
+    
     int num_nodos;
     int alt;
-
+    //se incializa la el nodo raiz como null
     public ArbolBB() {
         raiz = null;
     }
 
-      //buscar
-      public Nodo buscar (int d, Nodo r)
-      {
-        if(raiz == null)
-        {
-            return null;
-        }else if(r.dato==d){
-            return r;
-      }else if(r.dato < d)
-      {
-        return buscar(d,r.der); 
-      }else
-      {
-          return buscar(d,r.izq);
-      }
-      }
       
       //obtener el factor de equilibrio
-      public int obtenerFE(Nodo x)
+      public int obtenerFE(Nodo factorE)
       {
           //si el nodo x esta vacio retornara el valor de -1
-          if(x== null)
+          if(factorE == null)
           {
              return -1; 
           }else {
               //de lo contrario si tiene un elemento retornara el factor de equilibrio
-              return x.fe;
+              return factorE.fe;
           }
           
       }
-      //rotacion simpre izquierda
+      //rotacion simple izquierda
       public Nodo rotacionizquierda(Nodo c)
       {
+           //SE CREA UNA VARIABLE AUXILIAR QUE APUNTARA AL NODO C.IZQ
           Nodo auxiliar = c.izq;
+          
           c.izq = auxiliar.der;
+          //APUNTAMOS AUXILIAR. DER A C
           auxiliar.der = c;
+         //OBTENEMOS EL VALOR MAXIMO DE 2 VARIABLES EN ESTE CASO
+         //OBTENEMOS EL FACTOR DE EQUILIBRIO DEL LADO DERECHO Y IZQUIERDO Y LE SUMAREMOS 1
           c.fe =Math.max(obtenerFE(c.izq),obtenerFE(c.der))+1;
+          //OBTENEMOS EL VALOR MAXIMO DE 2 VARIABLES EN ESTE CASO
+           //OBTENEMOS EL FACTOR DE EQUILIBRIO DEL LADO DERECHO Y IZQUIERDO DE LA VARIANEL AUXILIAR Y LE SUMAREMOS 1
           auxiliar.fe = Math.max(obtenerFE(auxiliar.izq),obtenerFE(auxiliar.der))+1;
+          //RETORNAREMOS AUXILIAR
           return auxiliar;
       
       }
-      //rotacion simpre derecha
+      //rotacion simple derecha
         public Nodo rotacionderecha(Nodo c)
       {
+          //LO MISMO QUE EN LA ROTACION IZQUIERDA SOLO QUE APUNTANDO HACIA OTRA DIRECCION   
           Nodo auxiliar = c.der;
           c.der = auxiliar.izq;
           auxiliar.izq = c;
@@ -72,30 +66,43 @@ public class ArbolBB {
       //rotacion doble izquierda
         public Nodo rotacionDobleIzquierda(Nodo c)
         {
+           
            Nodo temporal;
+           //SE RALIZARA UNA ROTACION DERECHA
            c.izq = rotacionderecha(c.izq);
+           //SE RALIZARA UNA ROTACION IZQUIERDA
            temporal  = rotacionizquierda(c);
+           
            return temporal;
         }
         //rotacion doble derecha
         public Nodo rotacionDobleDerecha(Nodo c)
         {
+            
            Nodo temporal;
+            //SE RALIZARA UNA ROTACION IZQUIERDA
            c.der = rotacionizquierda(c.der);
+           //SE RALIZARA UNA ROTACION DERECHA
            temporal  = rotacionderecha(c);
            return temporal;
         }
         //metodo para insertar AVL
         public Nodo insertarAVL(Nodo nuevo, Nodo subAr)
         {
+            //EL NODO NUEVO PADRE TENDRA COMO VALOR EL SUBAR
             Nodo nuevoPadre = subAr ;
+            //SI EL NUEVO DATO ES MENOR A LO QUE YA TIENE EL SUBARBOL
             if(nuevo.dato<subAr.dato)
             {
+                //SI SUB ARBOL IZQUIERDO NO TIENE NADA LE ASIGNARA EL NODO NUEVO
                 if(subAr.izq == null)
                 {
                     subAr.izq = nuevo;
-                }else
+                }
+                //DE LO CONTRARIO
+                else
                 {
+                    //SE UTILIZA RECURSIVIDAD Y SE INSERTARA DEL LADO IZQUIERO LOS PARAMETROS ESTABLECIDOS
                     subAr.izq = insertarAVL(nuevo,subAr.izq); 
                     if((obtenerFE(subAr.izq)-obtenerFE(subAr.der)==2))
                     {
@@ -161,7 +168,7 @@ public class ArbolBB {
         }
         
     public boolean agregar(int dato) {
-        //le elimine el null,null despues del dato
+       
         Nodo nuevo = new Nodo(dato, null, null);
         insertar(nuevo, raiz);
         return true;

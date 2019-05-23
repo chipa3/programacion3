@@ -11,6 +11,7 @@ package arbolBB;
  */
 public class Nodo {
   public int dato , fe;
+  //SE CREAN DATOS DE TIPO NODO EL CUAL TENDRA LOS VALORES DEL LADO DERECHO O IZQUIERDO
   public Nodo izq,der;
 
     public Nodo(int dato, Nodo izq , Nodo der) {
