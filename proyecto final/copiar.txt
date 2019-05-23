@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  	we	eqweq	we	 	
 eqw	 	 	 	 	
  	eqqw	 	eq	qw	
@@ -26,3 +27,6 @@ we
  	 	 	 	 	
  	 	 	 	 	
  	 	 	qw	 	
+=======
+jorgfwe	
+>>>>>>> 6c2389ee1fe18d9367c85e0d86707ddb45473eda
