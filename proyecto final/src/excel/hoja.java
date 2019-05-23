@@ -194,7 +194,6 @@ public class hoja extends javax.swing.JFrame {
             }
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setColumnSelectionAllowed(false);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -323,14 +322,12 @@ public class hoja extends javax.swing.JFrame {
 
     private void opcionabrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionabrirActionPerformed
          //aqui va lo de abrir un documento 
-        JFileChooser abrir = new JFileChooser();
-        abrir.showSaveDialog(this);
+      
     }//GEN-LAST:event_opcionabrirActionPerformed
 
     private void opcionguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionguardarActionPerformed
        //aqui va lo de guardar un documento
-        JFileChooser guardar = new JFileChooser();
-        guardar.showSaveDialog(this);      
+       
     }//GEN-LAST:event_opcionguardarActionPerformed
  
     private void opcionsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionsalirActionPerformed
