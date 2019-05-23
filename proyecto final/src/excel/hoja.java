@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package excel;
 
 import java.awt.Color;
@@ -39,6 +34,7 @@ public class hoja extends javax.swing.JFrame {
     public hoja() {
         
         initComponents();
+       
         this.setTitle("HOJA DE CALCULO");
         this.setLocationRelativeTo(hoja.this);
         TableColumnModel tcm = jTable1.getColumnModel();
@@ -191,7 +187,7 @@ public class hoja extends javax.swing.JFrame {
             }
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setCellSelectionEnabled(true);
+        jTable1.setColumnSelectionAllowed(false);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -335,8 +331,6 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionsalirActionPerformed
 
     private void opcionlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionlimpiarActionPerformed
-        //se selecciono esta parte del codigo generado para asi cuando el usuario seleccione limpiar  la tabla
-        //este volvera a su estado original desde un principio
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -463,6 +457,11 @@ public class hoja extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
         }
+         
+        TableColumnModel tcm = jTable1.getColumnModel();
+        tcm.getColumn(0).setResizable(false);
+        tcm.getColumn(0).setPreferredWidth(25);
+        jTable1.getTableHeader().setReorderingAllowed(false);
 
     }//GEN-LAST:event_opcionlimpiarActionPerformed
 

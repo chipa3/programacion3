@@ -41,7 +41,7 @@ public class ControladorExcel implements ActionListener{
         if(e.getSource() == vistaE.opcionabrir){
             if(selecArchivo.showDialog(null, "Seleccionar archivo")==JFileChooser.APPROVE_OPTION){
                 archivo=selecArchivo.getSelectedFile();
-                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")){
+                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){
                     JOptionPane.showMessageDialog(null, 
                             modeloE.Importar(archivo, vistaE.jTable1) + "\n Formato ."+ archivo.getName().substring(archivo.getName().lastIndexOf(".")+1), 
                             "IMPORTAR EXCEL", JOptionPane.INFORMATION_MESSAGE);

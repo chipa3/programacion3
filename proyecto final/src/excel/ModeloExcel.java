@@ -43,7 +43,7 @@ public class ModeloExcel {
                     if(indiceFila==0){
                         modeloT.addColumn(celda.getStringCellValue());
                     }else{
-                        if(celda!=null){
+                        if(celda != null){
                             switch(celda.getCellType()){
                                 case Cell.CELL_TYPE_NUMERIC:
                                     listaColumna[indiceColumna]= (int)Math.round(celda.getNumericCellValue());
@@ -54,12 +54,14 @@ public class ModeloExcel {
                                 case Cell.CELL_TYPE_BOOLEAN:
                                     listaColumna[indiceColumna]= celda.getBooleanCellValue();
                                     break;
+                                   
                                 default:
                                     listaColumna[indiceColumna]=celda.getDateCellValue();
                                     break;
                             }
                             System.out.println("col"+indiceColumna+" valor: true - "+celda+".");
-                        }                        
+                        }
+                        
                     }
                 }
                 if(indiceFila!=0)modeloT.addRow(listaColumna);
