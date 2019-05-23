@@ -470,7 +470,8 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionLimpiarActionPerformed
 
     private void opcionColorCeldaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionColorCeldaActionPerformed
-
+        Color Fondo = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground());     
+        jTable.setBackground(Fondo);
         
     }//GEN-LAST:event_opcionColorCeldaActionPerformed
 

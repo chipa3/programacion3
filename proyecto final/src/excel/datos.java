@@ -56,7 +56,7 @@ public class datos extends javax.swing.JFrame {
         jLabel5.setText("BRYAN ESTUARDO MAZARIEGOS DAVILA 0901-17-1001");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setText("DANIEL MORAGA 0901-17-");
+        jLabel6.setText("DANIEL MORAGA 0901-17-3945");
 
         jButton1.setText("REGRESAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
