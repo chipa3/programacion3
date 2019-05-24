@@ -11,10 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import say.swing.JFontChooser;
 
@@ -24,22 +32,18 @@ public class hoja extends javax.swing.JFrame {
     DefaultTableModel modelo  = new DefaultTableModel();
     //variable de tipo fuente
     Font fuente ;
-    private int tipoDeLetra ;
+    private int tipoDeLetra ;//Variable tipo entero para seleccionar el tipo de letra en forma numerica
     public hoja() {
         
         initComponents();
-
-        //Coloca Jframe en pantalla completa
-        this.setExtendedState(MAXIMIZED_BOTH);
-        //Le coloca un icono a al jFrame y también al icono de barra de tareas
-        this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());
-       // Le coloca un titulo a nuestra ventana (jFrame)
-        this.setTitle("HOJA DE CALCULO");
-        this.setLocationRelativeTo(hoja.this);
-        TableColumnModel tcm = jTable1.getColumnModel();
-        tcm.getColumn(0).setResizable(false);
-        tcm.getColumn(0).setPreferredWidth(25);
-        jTable1.getTableHeader().setReorderingAllowed(false);
+        this.setExtendedState(MAXIMIZED_BOTH);//Coloca Jframe en pantalla completa
+        this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
+        this.setTitle("HOJA DE CALCULO"); // Le coloca un titulo a nuestra ventana (jFrame)
+        this.setLocationRelativeTo(hoja.this);//Indica la locacion.
+        TableColumnModel tcm = jTable.getColumnModel();//Establece que la Tabla tendra una variable de modelo de nombre tcm.
+        tcm.getColumn(0).setResizable(false);//Se coloca la redimensionabilidad como falsa.
+        tcm.getColumn(0).setPreferredWidth(25);//Coloca la anchura principal.
+        jTable.getTableHeader().setReorderingAllowed(false);
         
    
     }
@@ -48,7 +52,7 @@ public class hoja extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArchivo = new javax.swing.JMenu();
         opcionGuardar = new javax.swing.JMenuItem();
@@ -70,7 +74,7 @@ public class hoja extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"2", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -185,13 +189,13 @@ public class hoja extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        jTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
+        jTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable);
+        if (jTable.getColumnModel().getColumnCount() > 0) {
+            jTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
         jMenuArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excel/carpeta.png"))); // NOI18N
@@ -292,6 +296,11 @@ public class hoja extends javax.swing.JFrame {
         jMenuAyuda.add(opcionDatos);
 
         opcionManualUsuarios.setText("MANUAL DE USUARIOS");
+        opcionManualUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionManualUsuariosActionPerformed(evt);
+            }
+        });
         jMenuAyuda.add(opcionManualUsuarios);
 
         jMenuBar1.add(jMenuAyuda);
@@ -323,14 +332,14 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionGuardarActionPerformed
  
     private void opcionSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionSalirActionPerformed
-        dispose();
+        dispose();//Instruccion para cerrar el Programa
     }//GEN-LAST:event_opcionSalirActionPerformed
 
     private void opcionLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionLimpiarActionPerformed
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);//Se indica que el Scrollbar siempre se mantenga de manera Horizontal.
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jTable.setModel(new javax.swing.table.DefaultTableModel(//se abre un nuevo modelo para la tabla.
+            new Object [][] {//Se hace un nuevo objeto que contendra los datos para poder dejar vacia la tabla
                 {"1", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"2", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"3", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -432,125 +441,109 @@ public class hoja extends javax.swing.JFrame {
                 {"99", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {"100", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
-            new String [] {
+            new String [] {//Se abre un String vector el cual tendra las siguientes letras para colocarlas en la parte superiror indicando que columna es cada una
                 "", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean [] {//Se hace una variable booleana para poder mandar que elmentos se podran ver y cuales se quedan en falso.
                 false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {//Se hace una funcion publica boolenana que requerira 2 variables tipo entero
+                return canEdit [columnIndex];//Retornara la variable booleana ya con el int del index de la columna.
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setColumnSelectionAllowed(false);
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setDropMode(javax.swing.DropMode.ON_OR_INSERT);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        jTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);//SE apaga el auoto redimensionador
+        jTable.setColumnSelectionAllowed(false);//Se coloca e falso el selector de columna permitido 
+        jTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));//Se deja el cursor por default
+        jTable.setDropMode(javax.swing.DropMode.ON_OR_INSERT);//Se deja el drop mode en "en" "o" insertar.
+        jTable.getTableHeader().setReorderingAllowed(false); // el headerde  la tabla se deja su reordenamiento en falso.
+        jScrollPane1.setViewportView(jTable);//El JScroll panel se deja su configuracion de puerto en base a la tabla Jtable 1
+        if (jTable.getColumnModel().getColumnCount() > 0) {//Una condicion que nos dice que si el modleo de columnas es mayor a 0 entonces...
+            jTable.getColumnModel().getColumn(0).setResizable(false);//El modelo de columnas su redimensionador estara en falso.
         }
          
-        TableColumnModel tcm = jTable1.getColumnModel();
-        tcm.getColumn(0).setResizable(false);
-        tcm.getColumn(0).setPreferredWidth(25);
-        jTable1.getTableHeader().setReorderingAllowed(false);
+        TableColumnModel tcm = jTable.getColumnModel();//Variable tipo Modelo de columnas de tabla.
+        tcm.getColumn(0).setResizable(false);//Se declara que su redimensionador se queda en falso.
+        tcm.getColumn(0).setPreferredWidth(25);//El tamaño principal de columnas sera de 25
+        jTable.getTableHeader().setReorderingAllowed(false);// el header de la tabla se deja su reordenamiento en verdadero.
 
     }//GEN-LAST:event_opcionLimpiarActionPerformed
 
     private void opcionColorCeldaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionColorCeldaActionPerformed
-        Color Fondo = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground());     
-        jTable1.setBackground(Fondo);
+        Color Fondo = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground()); //una variable de tipo color que mostrara las opciones de colores para el fondo de las Celdas    
+        jTable.setBackground(Fondo);//Se coloca que el color de fondo sera en base a la variable  de color.
         
     }//GEN-LAST:event_opcionColorCeldaActionPerformed
 
     private void opcionColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionColorLetraActionPerformed
-        //una variable de tipo color que mostrara las opciones de colores para las letras
-        Color letra = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground());
-        //al seleccionar un color se le aplicara a los elementos de la tabla
-          jTable1.setForeground(letra);
+        Color letra = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground());//una variable de tipo color que mostrara las opciones de colores para las letras
+        jTable.setForeground(letra);//al seleccionar un color se le aplicara a los elementos de la tabla
     }//GEN-LAST:event_opcionColorLetraActionPerformed
 
     private void opcionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionDatosActionPerformed
-       //se abre una ventaja por aparte el cual mostrara datos de los creadores
-        datos d = new datos();
-        //funcion para mostrar la siguiente ventana
-       d.show();
-       //funcion para cerrar la ventana anterior
-       dispose();
+        datos d = new datos();//se abre una ventaja por aparte el cual mostrara datos de los creadores
+        d.show();//funcion para mostrar la siguiente ventana
+        dispose();//funcion para cerrar la ventana anterior
     }//GEN-LAST:event_opcionDatosActionPerformed
 
     private void opcionFuenteLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionFuenteLetraActionPerformed
-        //una variable de tipo jfontchooser que desplegara el menu de fuentes
-        JFontChooser fuentes = new JFontChooser();
-        //una varieble de tipo font que tendra lo seleccionado por el usuario
-            tipoDeLetra = fuentes.showDialog(this);
-            //si el usuario selecciona un tipo de letra permitido lo aplicara a la tabla
-                if (tipoDeLetra == JFontChooser.OK_OPTION) 
-                {
-                        fuente = fuentes.getSelectedFont();
-                            jTable1.setFont(fuente);
-                }
+        JFontChooser fuentes = new JFontChooser();//una variable de tipo jfontchooser que desplegara el menu de fuentes
+        tipoDeLetra = fuentes.showDialog(this);//una varieble de tipo font que tendra lo seleccionado por el usuario
+        if (tipoDeLetra == JFontChooser.OK_OPTION) {//Condicion que dice si tipDe Letra es igual a la opcion "Ok" del seleccionador de fuente
+            fuente = fuentes.getSelectedFont();//La variable tipo fuente sera colocada como el tipo de fuente
+            jTable.setFont(fuente);//Y se aplicara a la tabla
+            }
     }//GEN-LAST:event_opcionFuenteLetraActionPerformed
- private void copiar(File file) {
-     //en las siguientes variables se guardar lo que se selecciono para copiar
-            int rows[] = jTable1.getSelectedRows();                 
-            int colm[] = jTable1.getSelectedColumns();
+ private void copiar(File file) {//Funcion para poder copiar
+     
+     int rows[] = jTable.getSelectedRows();  //en las siguientes variables se guardar lo que se selecciono para copiar                 
+     int colm[] = jTable.getSelectedColumns();
             
 
-        try {
-                //en la variable fw tendra el archivo
-            FileWriter fw = new FileWriter(file);                     
-            BufferedWriter bw = new BufferedWriter(fw);
-            //ciclo for para recorrer el tamaño del area seleccionada
-            for (int i = 0; i < rows.length; i++) {                    
-                for (int j = 0; j < colm.length; j++) {
-                    //en la variable de tipo objeto se almacena lo que tienen las variables fila y columna
-                    Object value = jTable1.getValueAt(rows[i], colm[j]);       
-                       //si la casilla no esta vacia lo almacenara en la variable bw
-                    if (value != null) {
-                        bw.write(jTable1.getValueAt(rows[i], colm[j]).toString() + "\t");      
-                    } else {
-                        //si esta vacia guardara una tabulacion
-                        bw.write(" \t");
+     try {           
+         FileWriter fw = new FileWriter(file);//en la variable fw tendra el archivo               
+         BufferedWriter bw = new BufferedWriter(fw);//Variable tipo Buffered Writer, un amortiguadaor de escritura para el escritori del archivo 
+        for (int i = 0; i < rows.length; i++) {//ciclo for para recorrer el tamaño del area seleccionada   
+            for (int j = 0; j < colm.length; j++) {    
+                Object value = jTable.getValueAt(rows[i], colm[j]);//en la variable de tipo objeto se almacena lo que tienen las variables fila y columna                        
+                    if (value != null) {//si la casilla no esta vacia lo almacenara en la variable bw
+                        bw.write(jTable.getValueAt(rows[i], colm[j]).toString() + "\t");      
+                    } 
+                    else {                       
+                        bw.write(" \t");//si esta vacia guardara una tabulacion
                     }
                 }
-                bw.newLine();
+                bw.newLine();//Se hace un salto en linea
             }
-            //se cierran los archivos
-            bw.close();                                       
-            fw.close();
+         bw.close();//se cierran los archivos                                       
+         fw.close();
 
-        } catch (IOException ex) {
-           JOptionPane.showMessageDialog(null,"NO SE PUDO REALIZAR LA ACCION");
-        }
+        } 
+     catch (IOException ex) {         
+         JOptionPane.showMessageDialog(null,"NO SE PUDO REALIZAR LA ACCION");
+         }
     }
 
     private void opcionCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionCopiarActionPerformed
-        //se crean un archivo de tipo file donde se almacenara lo que se tiene seleccionado
-        File file = new File("copiar.txt");
-        copiar(file);
+        File file = new File("copiar.txt");//se crean un archivo de tipo file donde se almacenara lo que se tiene seleccionado
+        copiar(file);//Se manda el archivo file a la funcion copiar
     }//GEN-LAST:event_opcionCopiarActionPerformed
-  private void pegar(File file) {
-      //se seleccionan las filas y columnas que se desean 
-        int row = jTable1.getSelectedRow();       
-        int col = jTable1.getSelectedColumn();
-
+  private void pegar(File file) {    
+        int row = jTable.getSelectedRow();//se seleccionan las filas y columnas que se desean 
+        int col = jTable.getSelectedColumn();
         try {
-            FileReader fr = new FileReader(file);           
-            BufferedReader br = new BufferedReader(fr);
+            FileReader fr = new FileReader(file);//se declara una variable de tipo lector de archivo que leera el archivo file      
+            BufferedReader br = new BufferedReader(fr);////Variable tipo Buffered Writer, un amortiguadaor de escritura del lector 
 
-            Object[] lines = br.lines().toArray();                 
+            Object[] lines = br.lines().toArray();//se hace un objeto llamado lines que pondra en formacion el amortiguador de escritura                 
             String[] colmsAyd = lines[0].toString().split("\t");    
 
-            for (int i = 0; i < lines.length; i++) {                    
-                String[] colums = lines[i].toString().split("\t");
-                for (int j = 0; j < colmsAyd.length; j++) {
+            for (int i = 0; i < lines.length; i++) { // se habra un clico for para ver las longitudes de las lieas                    
+                String[] colums = lines[i].toString().split("\t");//habra una variable que almacene las lineas a pegar
+                for (int j = 0; j < colmsAyd.length; j++) {//nuevo ciclo for para poder colocar las lineas que lleven algun dato el cual se pegara
 
-                    jTable1.setValueAt(colums[j], row + i, col + j);     
+                    jTable.setValueAt(colums[j], row + i, col + j);     
                 }
             }
 
@@ -558,19 +551,20 @@ public class hoja extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"NO SE PUDO REALIZAR LA ACCION"+ex);
         }
 
-        file.delete();
+        file.delete();//se elimina el archivo con lo copiado
         
     }
 
     private void opcionPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionPegarActionPerformed
        
-        File file = new File("copiar.txt");
-        pegar(file);      
+        File file = new File("copiar.txt");//se crean un archivo de tipo file donde se almacenara lo que se tiene seleccionado
+        pegar(file);//Se manda el archivo file a la funcion pegar
     }//GEN-LAST:event_opcionPegarActionPerformed
+
+    private void opcionManualUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionManualUsuariosActionPerformed
+        
+    }//GEN-LAST:event_opcionManualUsuariosActionPerformed
   
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -586,7 +580,7 @@ public class hoja extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable;
     public javax.swing.JMenuItem opcionAbrir;
     private javax.swing.JMenuItem opcionColorCelda;
     private javax.swing.JMenuItem opcionColorLetra;
