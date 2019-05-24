@@ -24,7 +24,6 @@ public class registro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);//centrar la forma en la pantalla
         this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
         jLabel9.setIcon(new ImageIcon("images/fondo.JPG"));
-        btn_regresar.setIcon(new ImageIcon("Iconos/REGRESAR.PNG"));
         btnGuardar.setIcon(new ImageIcon("Iconos/GUARDAR.PNG"));
     }
 
@@ -47,13 +46,10 @@ public class registro extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         Eti_titulo = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btn_regresar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -107,21 +103,9 @@ public class registro extends javax.swing.JFrame {
         Eti_titulo.setText("NUEVO USUARIO");
         getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 22, 350, 50));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("Regresar");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Guardar");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
-
-        btn_regresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_regresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 90, 70));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 550));
 
         pack();
@@ -173,13 +157,6 @@ public class registro extends javax.swing.JFrame {
        
     }//GEN-LAST:event_formWindowClosing
 
-    private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
-        
-        hoja regres = new hoja();
-        regres.show();
-        dispose();
-    }//GEN-LAST:event_btn_regresarActionPerformed
-
     private void limpiar() {
         txtUsuario.setText("");
         txtPassword.setText("");
@@ -226,12 +203,10 @@ public class registro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Eti_titulo;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btn_regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField txtConfirmaPassword;

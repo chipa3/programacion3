@@ -133,8 +133,8 @@ public class login extends javax.swing.JFrame {
                 ModeloExcel modeloE = new ModeloExcel();//Se crea una variable de tipo ModeloExcel
                 hoja vistaE = new hoja();//se hace una variable de tipo Hoja
                 ControladorExcel contraControladorExcel = new ControladorExcel(vistaE, modeloE);//Se hace una variable tipo controlador y en dicha se envia la variable de  Hoja y Modelo Excel
-                //vistaE.setVisible(true);//se muestra el jframe de hoja.
-                 vistaE.show();//funcion para mostrar la siguiente ventana
+                vistaE.setVisible(true);//se muestra el jframe de hoja.
+                 //vistaE.show();//funcion para mostrar la siguiente ventana
                 dispose();
                 
                 JOptionPane.showMessageDialog(null,"Bienvenido: " + txtUsuario.getText());
