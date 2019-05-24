@@ -198,7 +198,7 @@ public class hoja extends javax.swing.JFrame {
             jTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        jMenuArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excel/carpeta.png"))); // NOI18N
+        jMenuArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/carpeta.png"))); // NOI18N
         jMenuArchivo.setText("ARCHIVOS");
         jMenuArchivo.setPreferredSize(new java.awt.Dimension(100, 24));
 
@@ -239,7 +239,7 @@ public class hoja extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuArchivo);
 
-        jMenuOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excel/ajustes.png"))); // NOI18N
+        jMenuOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ajustes.png"))); // NOI18N
         jMenuOpciones.setText("OPCIONES");
 
         opcionCopiar.setText("COPIAR");
@@ -284,7 +284,7 @@ public class hoja extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuOpciones);
 
-        jMenuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/excel/boton-de-ayuda-bocadillo-con-signo-de-interrogacion.png"))); // NOI18N
+        jMenuAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/boton-de-ayuda-bocadillo-con-signo-de-interrogacion.png"))); // NOI18N
         jMenuAyuda.setText("AYUDA");
 
         opcionDatos.setText("DATOS");
