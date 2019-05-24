@@ -92,7 +92,7 @@ public class login extends javax.swing.JFrame {
         Eti_titulo.setForeground(new java.awt.Color(0, 153, 153));
         Eti_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Eti_titulo.setText("ADMINISTRADOR");
-        getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 50, 459, 50));
+        getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 459, 50));
 
         etiqueta_ingresar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         etiqueta_ingresar.setText("Ingresar");
