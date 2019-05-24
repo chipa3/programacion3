@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 package excel;
 
@@ -15,10 +14,6 @@ import modelo.SqlUsuarios;
 import modelo.hash;
 import modelo.usuarios;
 
-/**
- *
- * @author Paula V
- */
 public class login extends javax.swing.JFrame {
     public static login frmLog;
     /**
@@ -92,7 +87,7 @@ public class login extends javax.swing.JFrame {
         Eti_titulo.setForeground(new java.awt.Color(0, 153, 153));
         Eti_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Eti_titulo.setText("ADMINISTRADOR");
-        getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 459, 50));
+        getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 50, 459, 50));
 
         etiqueta_ingresar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         etiqueta_ingresar.setText("Ingresar");
@@ -134,7 +129,14 @@ public class login extends javax.swing.JFrame {
             
             if(modSql.login(mod)){
                 
-                GestionExcel frMP = new GestionExcel();
+                //GestionExcel frMP = new GestionExcel();
+                ModeloExcel modeloE = new ModeloExcel();//Se crea una variable de tipo ModeloExcel
+                hoja vistaE = new hoja();//se hace una variable de tipo Hoja
+                ControladorExcel contraControladorExcel = new ControladorExcel(vistaE, modeloE);//Se hace una variable tipo controlador y en dicha se envia la variable de  Hoja y Modelo Excel
+                //vistaE.setVisible(true);//se muestra el jframe de hoja.
+                 vistaE.show();//funcion para mostrar la siguiente ventana
+                dispose();
+                
                 JOptionPane.showMessageDialog(null,"Bienvenido: " + txtUsuario.getText());
             }else{
                 JOptionPane.showMessageDialog(null,"Datos Incorrectos");
@@ -166,31 +168,7 @@ public class login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);

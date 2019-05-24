@@ -2,8 +2,8 @@
 package modelo;
 
 /**
- *
- * @author Paula V
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 public class usuarios {
     

@@ -10,8 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
- * @author Paula V
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 public class SqlUsuarios extends Conexion {
 
@@ -45,7 +45,7 @@ public class SqlUsuarios extends Conexion {
         ResultSet rs = null;
         Connection con = getConexion();
 
-        String sql = "SELECT id,usuario,password,nombre,id_tipo FROM usuarios WHERE usuario = ?";
+        String sql = "SELECT ID_Usuario,NombreUsuario,Password,Usuario FROM usuario WHERE NombreUsuario = ?";
 
         try {
             ps = con.prepareStatement(sql);
@@ -55,7 +55,7 @@ public class SqlUsuarios extends Conexion {
             if (rs.next()) {
                 if (usr.getPassword().equals(rs.getString(3))) {
 
-                    String sqlUpdate = "UPDATE usuarios SET last_session = ? WHERE id = ?";
+                    String sqlUpdate = "UPDATE usuario SET last_session = ? WHERE ID_Usuario = ?";
                     ps = con.prepareStatement(sqlUpdate);
                     ps.setString(1, usr.getLast_session());
                     ps.setInt(2, rs.getInt(1));
@@ -63,7 +63,7 @@ public class SqlUsuarios extends Conexion {
 
                     usr.setId(rs.getInt(1));
                     usr.setNombre(rs.getString(2));
-                    usr.setId_tipo(rs.getInt(5));
+                    
                     return true;
                 } else {
                     return false;

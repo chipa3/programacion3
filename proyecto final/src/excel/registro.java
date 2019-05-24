@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 package excel;
 
@@ -12,8 +11,8 @@ import modelo.hash;
 import modelo.usuarios;
 
 /**
- *
- * @author Paula V
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 public class registro extends javax.swing.JFrame {
 
@@ -203,9 +202,9 @@ public class registro extends javax.swing.JFrame {
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
         
-        /*Menu_Usuarios regres = new Menu_Usuarios();
+        Menu_Usuarios regres = new Menu_Usuarios();
         regres.show();
-        dispose();*/
+        dispose();
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void limpiar() {

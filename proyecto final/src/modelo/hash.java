@@ -6,8 +6,8 @@
 package modelo;
 
 /**
- *
- * @author Paula V
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
  */
 public class hash {
     /* Retorna un hash a partir de un tipo y un texto */

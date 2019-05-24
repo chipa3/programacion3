@@ -224,7 +224,9 @@ public class MANUAL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       dispose();
+       hoja h = new hoja();//Se crea una variable tipo Hoja
+        h.show();//Se muestra el jframde de la calse hoja
+        dispose();// se cierra esta jframe
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
