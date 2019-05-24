@@ -1,6 +1,7 @@
 package excel;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.BufferedReader;
@@ -10,10 +11,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import say.swing.JFontChooser;
 
@@ -21,7 +30,6 @@ import say.swing.JFontChooser;
 public class hoja extends javax.swing.JFrame {
     //variable de tipo tabla por defecto
     DefaultTableModel modelo  = new DefaultTableModel();
-    
     //variable de tipo fuente
     Font fuente ;
     private int tipoDeLetra ;//Variable tipo entero para seleccionar el tipo de letra en forma numerica
@@ -211,6 +219,11 @@ public class hoja extends javax.swing.JFrame {
         jMenuArchivo.add(opcionAbrir);
 
         opcionNuevo.setText("NUEVO");
+        opcionNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionNuevoActionPerformed(evt);
+            }
+        });
         jMenuArchivo.add(opcionNuevo);
 
         opcionLimpiar.setText("LIMPIAR");
@@ -476,7 +489,7 @@ public class hoja extends javax.swing.JFrame {
     private void opcionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionDatosActionPerformed
         datos d = new datos();//se abre una ventaja por aparte el cual mostrara datos de los creadores
         d.show();//funcion para mostrar la siguiente ventana
-        dispose();//funcion para cerrar la ventana anterior
+        
     }//GEN-LAST:event_opcionDatosActionPerformed
 
     private void opcionFuenteLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionFuenteLetraActionPerformed
@@ -554,8 +567,13 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionPegarActionPerformed
 
     private void opcionManualUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionManualUsuariosActionPerformed
-        
+    MANUAL x = new MANUAL();
+    x.show();
     }//GEN-LAST:event_opcionManualUsuariosActionPerformed
+
+    private void opcionNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcionNuevoActionPerformed
   
     public static void main(String args[]) {
        
@@ -586,4 +604,8 @@ public class hoja extends javax.swing.JFrame {
     private javax.swing.JMenuItem opcionPegar;
     private javax.swing.JMenuItem opcionSalir;
     // End of variables declaration//GEN-END:variables
+
+    private void setvisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -1,14 +1,10 @@
-
-/**
- * Bryan estuardo mazariegos Davila
- * Carnet: 09001-17-1001
- */
-
 package excel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import excel.hoja;
+import excel.ModeloExcel;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -44,17 +40,17 @@ public class ControladorExcel implements ActionListener{//se hace una clase que 
                 if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){//si se toma el archivo y tiee nombre y alguna de los tipos de archivo especificados
                     JOptionPane.showMessageDialog(null, 
                             modeloE.Importar(archivo, vistaE.jTable) + "\n Formato ."+ archivo.getName().substring(archivo.getName().lastIndexOf(".")+1), 
-                            "IMPORTAR", JOptionPane.INFORMATION_MESSAGE);
+                            "IMPORTAR EXCEL", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(null, "Elija un formato valido.");
                 }
             }
         }
         
-        if(e.getSource() == vistaE.opcionGuardar){
-            if(selecArchivo.showDialog(null, "Exportar")==JFileChooser.APPROVE_OPTION){
-                archivo=selecArchivo.getSelectedFile();
-                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")|| archivo.getName().endsWith("csv")){
+        if(e.getSource() == vistaE.opcionGuardar){//Si se selecciona la opcion guardar en el jframe Hoja
+            if(selecArchivo.showDialog(null, "Exportar")==JFileChooser.APPROVE_OPTION){//si se selecciona un archivo y se pone la opccion de aprovacion
+                archivo=selecArchivo.getSelectedFile();//se guarda el archivo el archivo seleccionado en la variable archivo
+                if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx")|| archivo.getName().endsWith("csv")){///si tiene nombre y tiene una de las extenciones 
                     JOptionPane.showMessageDialog(null, modeloE.Exportar(archivo, vistaE.jTable) + "\n Formato ."+ archivo.getName().substring(archivo.getName().lastIndexOf(".")+1));
                 }else{
                     JOptionPane.showMessageDialog(null, "Elija un formato valido.");
@@ -64,3 +60,4 @@ public class ControladorExcel implements ActionListener{//se hace una clase que 
     }
     
 }
+
