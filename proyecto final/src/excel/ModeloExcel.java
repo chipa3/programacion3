@@ -1,8 +1,13 @@
+/**
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
+ */
 package excel;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.hssf.usermodel.*;
@@ -17,6 +22,7 @@ public class ModeloExcel {
         DefaultTableModel modeloT = new DefaultTableModel();//Se hace una variable de tipo modelo para la tabla
         tablaD.setModel(modeloT);//a la tabla se le coloca el nuevo modelo.
         tablaD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//se apaga el auto redimensionador.
+        TableColumnModel tcm = tablaD.getColumnModel();
         try {
             wb = WorkbookFactory.create(new FileInputStream(archivo));//Se crea una entrada para el archivo
             Sheet hoja = wb.getSheetAt(0);//Se cra una nueva hoja que estara en el libro wb
@@ -49,14 +55,16 @@ public class ModeloExcel {
                                 default://si no es ninguna de las de arriba se tomara de tipo date
                                     listaColumna[indiceColumna]=celda.getDateCellValue();
                                     break;
-                            }//se ¿muestra en consola el contador
-                            System.out.println("col"+indiceColumna+" valor: true - "+celda+".");
+                            }
                         }
                         
                     }
                 }
                 if(indiceFila!=0)modeloT.addRow(listaColumna);//si el contador es diferente a 0 entonces modelot se acomplara las filas para el objeto listacolumna
             }
+        tcm.getColumn(0).setResizable(false);
+        tcm.getColumn(0).setPreferredWidth(25);
+        tablaD.getTableHeader().setReorderingAllowed(false);
             respuesta="Importación exitosa";// se da un nuevo mensaje a la variable string 
         } catch (IOException | InvalidFormatException | EncryptedDocumentException e) {
             System.err.println(e.getMessage());//De lo contrario no se cumpli nada de arriba se mostrara el mensaje antes colocado 
@@ -72,19 +80,24 @@ public class ModeloExcel {
         }else{
             wb = new XSSFWorkbook();//sino el libro sera un nuevo XSSF
         }
-        Sheet hoja = wb.createSheet("Prueba");//Se crea una nueva hoja la cual se donminara prueba
+        Sheet hoja = wb.createSheet("Hoja");//Se crea una nueva hoja
         
         try {
             for (int i = -1; i < numFila; i++) {//ciclo para ir atravez de las filas
                 Row fila = hoja.createRow(i+1);//se hara una nueva 
                 for (int j = 0; j < numColumna; j++) {//ciclo para ir atravez de las columnas
                     Cell celda = fila.createCell(j);//se crear una celda conforme para la nueva fila
-                    if(i==-1){// si el contador del primer for es igual a 1 
-                        celda.setCellValue(String.valueOf(tablaD.getColumnName(j)));//Celda se evalua para tomar su columna
+                   if(i==-1){
+                        celda.setCellValue(String.valueOf(tablaD.getColumnName(j)));
                     }else{
-                        celda.setCellValue(String.valueOf(tablaD.getValueAt(i, j)));//Celda se evaula y se toma el valor de i y j
-                    }
-                    wb.write(new FileOutputStream(archivo));//S escribe en el libro.
+                        if(tablaD.getValueAt(i, j)==null)
+                        {
+                            celda.setCellValue(String.valueOf(""));
+                        }else{
+                        celda.setCellValue(String.valueOf(tablaD.getValueAt(i, j)));
+                        }
+                   }
+                    wb.write(new FileOutputStream(archivo));//Se escribe en el archivo
                 }
             }
             respuesta="Exportación exitosa.";//se cambia el mensaje de la variable

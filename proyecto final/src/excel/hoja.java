@@ -1,7 +1,6 @@
 package excel;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.BufferedReader;
@@ -11,18 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import say.swing.JFontChooser;
 
@@ -30,6 +21,7 @@ import say.swing.JFontChooser;
 public class hoja extends javax.swing.JFrame {
     //variable de tipo tabla por defecto
     DefaultTableModel modelo  = new DefaultTableModel();
+    
     //variable de tipo fuente
     Font fuente ;
     private int tipoDeLetra ;//Variable tipo entero para seleccionar el tipo de letra en forma numerica
