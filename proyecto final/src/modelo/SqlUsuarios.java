@@ -20,15 +20,13 @@ public class SqlUsuarios extends Conexion {
         PreparedStatement ps = null;
         Connection con = getConexion();
 
-        String sql = "INSERT INTO usuarios (usuario,password,nombre,correo,id_tipo) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO usuario (NombreUsuario,password,Usuario) VALUES (?,?,?)";
 
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, usr.getUsuario());
             ps.setString(2, usr.getPassword());
             ps.setString(3, usr.getNombre());
-            ps.setString(4, usr.getCorreo());
-            ps.setInt(5, usr.getId_tipo());
             ps.execute();
             return true;
 
@@ -82,7 +80,7 @@ public class SqlUsuarios extends Conexion {
         ResultSet rs = null;
         Connection con = getConexion();
 
-        String sql = "SELECT count(id) FROM usuarios WHERE usuario = ?";
+        String sql = "SELECT count(ID_Usuario) FROM usuario WHERE NombreUsuario = ?";
 
         try {
             ps = con.prepareStatement(sql);

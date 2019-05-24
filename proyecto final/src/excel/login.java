@@ -75,7 +75,7 @@ public class login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 80, 70));
+        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 80, 70));
 
         txtUsuario.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 217, -1));
@@ -86,12 +86,12 @@ public class login extends javax.swing.JFrame {
         Eti_titulo.setFont(new java.awt.Font("Fredericka the Great", 1, 36)); // NOI18N
         Eti_titulo.setForeground(new java.awt.Color(0, 153, 153));
         Eti_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Eti_titulo.setText("ADMINISTRADOR");
+        Eti_titulo.setText("Inicio sesión");
         getContentPane().add(Eti_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 50, 459, 50));
 
         etiqueta_ingresar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         etiqueta_ingresar.setText("Ingresar");
-        getContentPane().add(etiqueta_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, -1, -1));
+        getContentPane().add(etiqueta_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
 
         btn_regresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,11 +99,11 @@ public class login extends javax.swing.JFrame {
                 btn_regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 80, 70));
+        getContentPane().add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 80, 70));
 
         regresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        regresar.setText("Regresar");
-        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
+        regresar.setText("Salir");
+        getContentPane().add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 80, 70));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 400));
 

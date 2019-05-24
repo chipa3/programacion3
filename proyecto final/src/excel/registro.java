@@ -22,9 +22,10 @@ public class registro extends javax.swing.JFrame {
     public registro() {
         initComponents();
         this.setLocationRelativeTo(null);//centrar la forma en la pantalla
+        this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
         jLabel9.setIcon(new ImageIcon("images/fondo.JPG"));
-        btn_regresar.setIcon(new ImageIcon("iconos/REGRESAR.PNG"));
-        btnGuardar.setIcon(new ImageIcon("iconos/GUARDAR.PNG"));
+        btn_regresar.setIcon(new ImageIcon("Iconos/REGRESAR.PNG"));
+        btnGuardar.setIcon(new ImageIcon("Iconos/GUARDAR.PNG"));
     }
 
     /**
@@ -44,11 +45,7 @@ public class registro extends javax.swing.JFrame {
         txtConfirmaPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtTipo = new javax.swing.JComboBox<>();
         Eti_titulo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -96,32 +93,13 @@ public class registro extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 263, 197, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel5.setText("Correo:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 312, -1, -1));
-
-        txtCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 309, 197, -1));
-
         btnGuardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 90, 70));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel6.setText("Tipo:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 358, -1, -1));
-
-        txtTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtTipo.setMaximumRowCount(2);
-        txtTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Administrador", "Usuario" }));
-        txtTipo.setToolTipText("");
-        getContentPane().add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 355, -1, -1));
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 90, 70));
 
         Eti_titulo.setFont(new java.awt.Font("Fredericka the Great", 1, 36)); // NOI18N
         Eti_titulo.setForeground(new java.awt.Color(0, 153, 153));
@@ -131,11 +109,11 @@ public class registro extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Regresar");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Guardar");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
         btn_regresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +121,7 @@ public class registro extends javax.swing.JFrame {
                 btn_regresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 90, 70));
+        getContentPane().add(btn_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 90, 70));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 550));
 
         pack();
@@ -157,7 +135,7 @@ public class registro extends javax.swing.JFrame {
         String pass = new String(txtPassword.getPassword());
         String passCon = new String(txtConfirmaPassword.getPassword());
 
-        if (txtUsuario.getText().equals("") || pass.equals("") || passCon.equals("") || txtNombre.getText().equals("") || txtCorreo.getText().equals("")) {
+        if (txtUsuario.getText().equals("") || pass.equals("") || passCon.equals("") || txtNombre.getText().equals("")) {
 
             JOptionPane.showMessageDialog(null, "Existen Campos Vacíos debe llenar todos los Campos");
 
@@ -167,15 +145,12 @@ public class registro extends javax.swing.JFrame {
 
                 if (modSql.existeUsuario(txtUsuario.getText()) == 0) {
 
-                    if (modSql.esEmail(txtCorreo.getText())) {
 
                         String nuevoPass = hash.sha1(pass);
 
                         mod.setUsuario(txtUsuario.getText());
                         mod.setPassword(nuevoPass);
                         mod.setNombre(txtNombre.getText());
-                        mod.setCorreo(txtCorreo.getText());
-                        mod.setId_tipo(txtTipo.getSelectedIndex());
                         
 
                         if (modSql.registrar(mod)) {
@@ -184,9 +159,7 @@ public class registro extends javax.swing.JFrame {
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al intentar Guardar un Registro");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "El Correo Electornico no es Valido");
-                    }
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
@@ -202,7 +175,7 @@ public class registro extends javax.swing.JFrame {
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
         
-        Menu_Usuarios regres = new Menu_Usuarios();
+        hoja regres = new hoja();
         regres.show();
         dispose();
     }//GEN-LAST:event_btn_regresarActionPerformed
@@ -212,7 +185,6 @@ public class registro extends javax.swing.JFrame {
         txtPassword.setText("");
         txtConfirmaPassword.setText("");
         txtNombre.setText("");
-        txtCorreo.setText("");
     }
 
     /**
@@ -259,16 +231,12 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPasswordField txtConfirmaPassword;
-    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JComboBox<String> txtTipo;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

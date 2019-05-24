@@ -1,6 +1,7 @@
 package excel;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
@@ -61,6 +63,11 @@ public class hoja extends javax.swing.JFrame {
         jMenuAyuda = new javax.swing.JMenu();
         opcionDatos = new javax.swing.JMenuItem();
         opcionManualUsuarios = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jyoutube = new javax.swing.JMenuItem();
+        jgithub = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -297,6 +304,40 @@ public class hoja extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuAyuda);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/nota.png"))); // NOI18N
+        jMenu1.setText("REGISTRO");
+
+        jMenuItem1.setText("REGISTRO DE USUARIOS");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/enlace.png"))); // NOI18N
+        jMenu2.setText("LINKS");
+
+        jyoutube.setText("YOUTUBE");
+        jyoutube.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jyoutubeActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jyoutube);
+
+        jgithub.setText("GIT HUB");
+        jgithub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jgithubActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jgithub);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -476,7 +517,6 @@ public class hoja extends javax.swing.JFrame {
     private void opcionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionDatosActionPerformed
         datos d = new datos();//se abre una ventaja por aparte el cual mostrara datos de los creadores
         d.show();//funcion para mostrar la siguiente ventana
-        dispose();//funcion para cerrar la ventana anterior
     }//GEN-LAST:event_opcionDatosActionPerformed
 
     private void opcionFuenteLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionFuenteLetraActionPerformed
@@ -556,8 +596,36 @@ public class hoja extends javax.swing.JFrame {
     private void opcionManualUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionManualUsuariosActionPerformed
         MANUAL regres = new MANUAL();
         regres.show();
-        dispose();
     }//GEN-LAST:event_opcionManualUsuariosActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       registro regres = new registro();
+        regres.show();
+        dispose();
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jyoutubeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jyoutubeActionPerformed
+        // TODO add your handling code here:
+        try{
+            Desktop.getDesktop().browse(new URI(""));
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"No se pudo conectar"+e);
+        }
+    }//GEN-LAST:event_jyoutubeActionPerformed
+
+    private void jgithubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jgithubActionPerformed
+        // TODO add your handling code here:
+        try{
+            Desktop.getDesktop().browse(new URI(""));
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"No se pudo conectar"+e);
+        }
+    }//GEN-LAST:event_jgithubActionPerformed
   
     public static void main(String args[]) {
        
@@ -569,12 +637,17 @@ public class hoja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     public javax.swing.JMenu jMenuArchivo;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable;
+    private javax.swing.JMenuItem jgithub;
+    private javax.swing.JMenuItem jyoutube;
     public javax.swing.JMenuItem opcionAbrir;
     private javax.swing.JMenuItem opcionColorCelda;
     private javax.swing.JMenuItem opcionColorLetra;
