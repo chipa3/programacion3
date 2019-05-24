@@ -22,10 +22,10 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
         this.setLocationRelativeTo(null);//centrar la forma en la pantalla
-        jLabel3.setIcon(new ImageIcon("images/fondo.JPG"));
-        btnIngresar.setIcon(new ImageIcon("iconos/ingresar4.PNG"));
-        btn_regresar.setIcon(new ImageIcon("iconos/REGRESAR.PNG"));
-        jLabel4.setIcon(new ImageIcon("iconos/admin.PNG"));
+         this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
+        btnIngresar.setIcon(new ImageIcon("Iconos/ingresar4.PNG"));
+        btn_regresar.setIcon(new ImageIcon("Iconos/REGRESAR.PNG"));
+        jLabel4.setIcon(new ImageIcon("Iconos/admin.PNG"));
     }
 
     /**

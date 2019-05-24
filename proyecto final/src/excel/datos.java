@@ -13,6 +13,7 @@ public class datos extends javax.swing.JFrame {
         initComponents();
        
         this.setLocationRelativeTo(datos.this);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
         
         //Metodo para poner la imagen del Logo 
        ImageIcon lg = new ImageIcon (getClass().getResource("/Imagenes/logo.png"));

@@ -12,7 +12,7 @@ public class MANUAL extends javax.swing.JFrame {
     public MANUAL() {
         initComponents();
           this.setLocationRelativeTo(MANUAL.this);
-          
+           this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
           //Metodo para agregar una imagen de fondo
         ((JPanel)getContentPane()).setOpaque(false);
         ImageIcon uno=new ImageIcon(this.getClass().getResource("/Imagenes/universo-espacio.jpg"));
