@@ -609,7 +609,7 @@ public class hoja extends javax.swing.JFrame {
     private void jyoutubeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jyoutubeActionPerformed
         // TODO add your handling code here:
         try{
-            Desktop.getDesktop().browse(new URI(""));
+            Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=DJYxbYPg0Ec"));
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,"No se pudo conectar"+e);
@@ -619,7 +619,7 @@ public class hoja extends javax.swing.JFrame {
     private void jgithubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jgithubActionPerformed
         // TODO add your handling code here:
         try{
-            Desktop.getDesktop().browse(new URI(""));
+            Desktop.getDesktop().browse(new URI("https://github.com/chipa3/programacion3/tree/master/proyecto%20final"));
         }catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,"No se pudo conectar"+e);
