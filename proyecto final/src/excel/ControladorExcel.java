@@ -1,10 +1,14 @@
+
+/**
+ * Bryan estuardo mazariegos Davila
+ * Carnet: 09001-17-1001
+ */
+
 package excel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import excel.hoja;
-import excel.ModeloExcel;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -40,7 +44,7 @@ public class ControladorExcel implements ActionListener{//se hace una clase que 
                 if(archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){//si se toma el archivo y tiee nombre y alguna de los tipos de archivo especificados
                     JOptionPane.showMessageDialog(null, 
                             modeloE.Importar(archivo, vistaE.jTable) + "\n Formato ."+ archivo.getName().substring(archivo.getName().lastIndexOf(".")+1), 
-                            "IMPORTAR EXCEL", JOptionPane.INFORMATION_MESSAGE);
+                            "IMPORTAR", JOptionPane.INFORMATION_MESSAGE);
                 }else{
                     JOptionPane.showMessageDialog(null, "Elija un formato valido.");
                 }
