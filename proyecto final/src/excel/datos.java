@@ -98,9 +98,8 @@ public class datos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       hoja h = new hoja();//Se crea una variable tipo Hoja
-       h.show();//Se muestra el jframde de la calse hoja 
-       dispose();// se cierra esta jframe 
+       
+        dispose();// se cierra esta jframe
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

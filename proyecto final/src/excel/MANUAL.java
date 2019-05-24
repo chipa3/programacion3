@@ -6,6 +6,7 @@ public class MANUAL extends javax.swing.JFrame {
   
     public MANUAL() {
         initComponents();
+          this.setLocationRelativeTo(MANUAL.this);
     }
 
     
@@ -42,9 +43,11 @@ public class MANUAL extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MANUAL USUARIO");
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -163,8 +166,20 @@ public class MANUAL extends javax.swing.JFrame {
         jLabel29.setText("-Presione Aceptar y aparecera el color de la opcion que eligio.");
         getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
 
+        jButton1.setText("REGRESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     public static void main(String args[]) {
@@ -177,6 +192,7 @@ public class MANUAL extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

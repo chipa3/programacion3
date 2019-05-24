@@ -49,7 +49,6 @@ public class hoja extends javax.swing.JFrame {
         jMenuArchivo = new javax.swing.JMenu();
         opcionGuardar = new javax.swing.JMenuItem();
         opcionAbrir = new javax.swing.JMenuItem();
-        opcionNuevo = new javax.swing.JMenuItem();
         opcionLimpiar = new javax.swing.JMenuItem();
         opcionSalir = new javax.swing.JMenuItem();
         jMenuOpciones = new javax.swing.JMenu();
@@ -209,9 +208,6 @@ public class hoja extends javax.swing.JFrame {
             }
         });
         jMenuArchivo.add(opcionAbrir);
-
-        opcionNuevo.setText("NUEVO");
-        jMenuArchivo.add(opcionNuevo);
 
         opcionLimpiar.setText("LIMPIAR");
         opcionLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -476,7 +472,7 @@ public class hoja extends javax.swing.JFrame {
     private void opcionDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionDatosActionPerformed
         datos d = new datos();//se abre una ventaja por aparte el cual mostrara datos de los creadores
         d.show();//funcion para mostrar la siguiente ventana
-        dispose();//funcion para cerrar la ventana anterior
+      
     }//GEN-LAST:event_opcionDatosActionPerformed
 
     private void opcionFuenteLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionFuenteLetraActionPerformed
@@ -554,7 +550,8 @@ public class hoja extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionPegarActionPerformed
 
     private void opcionManualUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionManualUsuariosActionPerformed
-        
+            MANUAL m = new MANUAL();
+            m.show();
     }//GEN-LAST:event_opcionManualUsuariosActionPerformed
   
     public static void main(String args[]) {
@@ -582,7 +579,6 @@ public class hoja extends javax.swing.JFrame {
     public javax.swing.JMenuItem opcionGuardar;
     private javax.swing.JMenuItem opcionLimpiar;
     private javax.swing.JMenuItem opcionManualUsuarios;
-    private javax.swing.JMenuItem opcionNuevo;
     private javax.swing.JMenuItem opcionPegar;
     private javax.swing.JMenuItem opcionSalir;
     // End of variables declaration//GEN-END:variables

@@ -40,11 +40,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="opcionNuevo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NUEVO"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="opcionLimpiar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="LIMPIAR"/>
