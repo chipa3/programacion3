@@ -1,3 +1,5 @@
+//NOMBRE: JEHU DANIEL MORAGA
+//CARNET: 0901-17-3945
 package excel;
 
 import java.awt.Color;
@@ -28,7 +30,8 @@ public class hoja extends javax.swing.JFrame {
     Font fuente ;
     private int tipoDeLetra ;//Variable tipo entero para seleccionar el tipo de letra en forma numerica
     public hoja() {
-        
+        //NOMBRE: DANIEL MORGA
+    //CARNET: 0901-17-3945
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);//Coloca Jframe en pantalla completa
         this.setIconImage(new ImageIcon(getClass().getResource("/Iconos/HojaDeCalculo.PNG")).getImage());//Le coloca un icono a al jFrame y también al icono de barra de tareas
@@ -367,7 +370,8 @@ public class hoja extends javax.swing.JFrame {
     private void opcionSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionSalirActionPerformed
         dispose();//Instruccion para cerrar el Programa
     }//GEN-LAST:event_opcionSalirActionPerformed
-
+//NOMBRE: JOSE ESTANISLAO LOPEZ
+    //0901-17-12
     private void opcionLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionLimpiarActionPerformed
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);//Se indica que el Scrollbar siempre se mantenga de manera Horizontal.
 
@@ -502,13 +506,15 @@ public class hoja extends javax.swing.JFrame {
         jTable.getTableHeader().setReorderingAllowed(false);// el header de la tabla se deja su reordenamiento en verdadero.
 
     }//GEN-LAST:event_opcionLimpiarActionPerformed
-
+//NOMBRE: DANIEL MORGA
+    //CARNET: 0901-17-3945
     private void opcionColorCeldaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionColorCeldaActionPerformed
         Color Fondo = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground()); //una variable de tipo color que mostrara las opciones de colores para el fondo de las Celdas    
         jTable.setBackground(Fondo);//Se coloca que el color de fondo sera en base a la variable  de color.
         
     }//GEN-LAST:event_opcionColorCeldaActionPerformed
-
+//NOMBRE: DANIEL MORGA
+    //CARNET: 0901-17-3945
     private void opcionColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionColorLetraActionPerformed
         Color letra = JColorChooser.showDialog(rootPane,"COLOR", this.getForeground());//una variable de tipo color que mostrara las opciones de colores para las letras
         jTable.setForeground(letra);//al seleccionar un color se le aplicara a los elementos de la tabla
@@ -518,7 +524,8 @@ public class hoja extends javax.swing.JFrame {
         datos d = new datos();//se abre una ventaja por aparte el cual mostrara datos de los creadores
         d.show();//funcion para mostrar la siguiente ventana
     }//GEN-LAST:event_opcionDatosActionPerformed
-
+//NOMBRE: DANIEL MORGA
+    //CARNET: 0901-17-3945
     private void opcionFuenteLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionFuenteLetraActionPerformed
         JFontChooser fuentes = new JFontChooser();//una variable de tipo jfontchooser que desplegara el menu de fuentes
         tipoDeLetra = fuentes.showDialog(this);//una varieble de tipo font que tendra lo seleccionado por el usuario
@@ -527,7 +534,10 @@ public class hoja extends javax.swing.JFrame {
             jTable.setFont(fuente);//Y se aplicara a la tabla
             }
     }//GEN-LAST:event_opcionFuenteLetraActionPerformed
- private void copiar(File file) {//Funcion para poder copiar
+ //NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
+ //CARNET 0901-17-12
+ 
+    private void copiar(File file) {//Funcion para poder copiar
      
      int rows[] = jTable.getSelectedRows();  //en las siguientes variables se guardar lo que se selecciono para copiar                 
      int colm[] = jTable.getSelectedColumns();
@@ -556,12 +566,17 @@ public class hoja extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null,"NO SE PUDO REALIZAR LA ACCION");
          }
     }
-
+//NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
+ //CARNET 0901-17-12
+ //
     private void opcionCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionCopiarActionPerformed
         File file = new File("copiar.txt");//se crean un archivo de tipo file donde se almacenara lo que se tiene seleccionado
         copiar(file);//Se manda el archivo file a la funcion copiar
     }//GEN-LAST:event_opcionCopiarActionPerformed
-  private void pegar(File file) {    
+  //NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
+ //CARNET 0901-17-12
+ 
+    private void pegar(File file) {    
         int row = jTable.getSelectedRow();//se seleccionan las filas y columnas que se desean 
         int col = jTable.getSelectedColumn();
         try {
@@ -586,7 +601,9 @@ public class hoja extends javax.swing.JFrame {
         file.delete();//se elimina el archivo con lo copiado
         
     }
-
+//NOMBRE: JOSE ESTANISLAO LOPEZ TUBAC
+ //CARNET 0901-17-12
+ 
     private void opcionPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionPegarActionPerformed
        
         File file = new File("copiar.txt");//se crean un archivo de tipo file donde se almacenara lo que se tiene seleccionado

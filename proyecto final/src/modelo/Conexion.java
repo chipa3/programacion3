@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Bryan estuardo mazariegos Davila
+ * JORGE SOSA 0901-16-4067
  * Carnet: 09001-17-1001
  */
 public class Conexion {

@@ -1,3 +1,5 @@
+//NOMBRE: JORGE VASQUEZ 0901-16-4067
+//NOMBRE: DANIEL MORGA 0901-17-3945
 package excel;
 
 import javax.swing.ImageIcon;

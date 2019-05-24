@@ -4,6 +4,7 @@ package modelo;
 /**
  * Bryan estuardo mazariegos Davila
  * Carnet: 09001-17-1001
+ * JORGE SOSA 0901-16-4067
  */
 public class usuarios {
     
