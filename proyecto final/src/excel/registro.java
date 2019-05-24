@@ -203,9 +203,9 @@ public class registro extends javax.swing.JFrame {
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
         
-        Menu_Usuarios regres = new Menu_Usuarios();
+        /*Menu_Usuarios regres = new Menu_Usuarios();
         regres.show();
-        dispose();
+        dispose();*/
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void limpiar() {
